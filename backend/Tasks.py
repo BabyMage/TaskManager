@@ -8,7 +8,8 @@ from pydantic import BaseModel
 class Task(BaseModel):
     Task: str
     Date: str
-    Done: bool
+    Done: bool 
+
 
 app = FastAPI()
 
