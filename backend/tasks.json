@@ -1,0 +1,19 @@
+{
+    "list": [
+        {
+            "Task": "Estudar React",
+            "Date": "2026-04-01",
+            "Done": false
+        },
+        {
+            "Task": "Aprender FastAPI",
+            "Date": "2026-04-02",
+            "Done": true
+        },
+        {
+            "Task": "Lavar a Lou\u00e7a",
+            "Date": "2026-04-09",
+            "Done": true
+        }
+    ]
+}
