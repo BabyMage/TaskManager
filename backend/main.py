@@ -25,6 +25,9 @@ app.add_middleware(
 # 📁 Caminho do JSON
 FILE_PATH = Path(__file__).parent / "tasks.json"
 
+# -> ROTAS 👇👇
+
+
 # 🔍 GET - pegar tarefas
 @app.get("/tasks")
 def get_tasks():
@@ -32,13 +35,26 @@ def get_tasks():
         data = json.load(file)
     return data
 
+#################################################################
+
 # ➕ POST - adicionar tarefa
 @app.post("/add_task")
 def add_task(task: Task):
     with open(FILE_PATH, "r") as file:
         data = json.load(file)
+    
+    if data["list"]:
+        last_id = data["list"][-1]["id"]
+    else:
+        last_id = 0
+    
+    new_task = task.model_dump()
+    new_task["id"] = last_id + 1
 
-    data["list"].append(task.model_dump())
+
+    data["list"].append(new_task)
 
     with open(FILE_PATH, "w") as file:
         json.dump(data, file, indent=4)
+    
+    return new_task
