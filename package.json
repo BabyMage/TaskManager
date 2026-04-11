@@ -1,12 +1,12 @@
 {
-  "name": "projecttest",
+  "name": "taskmanager",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
     "frontend": "vite",
-    "backend": "uvicorn backend.Tasks:app --reload"
+    "backend": "uvicorn backend.main:app --reload"
 },
   "dependencies": {
     "axios": "^1.13.6",
