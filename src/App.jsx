@@ -8,7 +8,7 @@ import { getTask } from "./utils/Controller";
 function App() {
 
   const [tasks, setTasks] = useState([]);
-
+  const [selectedTask, setSelectedTask] = useState(null)
 
   async function loadTasks() {
     const data = await getTask();
@@ -22,9 +22,13 @@ function App() {
   return(
     <>
       <h1>Gerenciador de Tarefas</h1>
-      <Controls reloadTasks={loadTasks}/>
+      <Controls 
+        reloadTasks={loadTasks}
+        selectedTask={selectedTask}  />
       <TableHead />
-      <TableBody tasks={tasks}/>
+      <TableBody 
+        tasks={tasks}
+        setSelectedTask={setSelectedTask}  />
     </>
   );
 };

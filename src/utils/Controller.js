@@ -1,7 +1,5 @@
-// Aqui é a controller
-// Ela vai pegar os dados do JSON e enviar por App para que o App renderize na forma de uma tabela em HTLM.
-// E então vai executar diferentes funções com o JSON de acordo com a interação do usuario.
 
+//👇 Função para mostrar tarefas (sempre roda)
 export async function getTask()
 {
     try 
@@ -24,6 +22,9 @@ export async function getTask()
     
 }
 
+//👇 Função de adicionar tarefas. 
+// Roda quando botão "adicionar tafefas" é clicado
+
 export async function addTask(task) {
 
     try{
@@ -40,5 +41,39 @@ export async function addTask(task) {
     } 
     catch (error) {
         console.error("Erro ao adicionar tarefa: ", error)
+    }
+}
+
+//👇 Função para alterar tarefas
+// Roda quando "Alterar Terefa" é clicado e usa os dados dos inputs.
+
+export async function updateTask(id, task)
+{
+    try{
+        const response = await fetch(`http://127.0.0.1:8000/update_task/${id}`,
+        {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(task),
+        });
+        return await response.json();   
+    }catch (error){
+        console.log("Erro ao atualizar tarefa", error)
+    }
+}
+
+//👇 Função deletar tarefa. Roda quando botão "deletar tarefa" é clicado
+
+export async function deleteTask(id)
+{
+    try
+    {
+        const response = await fetch(`http://127.0.0.1:8000/delete_task/${id}`, 
+        {
+            method: "DELETE"
+        });
+        return await response.json()
+    }catch (error){
+        console.log("Erro ao deletar tarefa", error)
     }
 }
