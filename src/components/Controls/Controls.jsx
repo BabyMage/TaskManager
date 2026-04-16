@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { addTask } from "../../utils/Controller";
+import { useState, useEffect } from "react";
+import { addTask, updateTask, deleteTask } from "../../utils/Controller";
 
-function Controls({ reloadTasks })
+function Controls({ reloadTasks, selectedTask })
 {
 
     const [task, setTask] = useState("");
@@ -43,13 +43,53 @@ function Controls({ reloadTasks })
         setDone(false)
     }
 
+    useEffect(() => {
+        if(selectedTask){
+            setTask(selectedTask.Task)
+            setDate(selectedTask.Date)
+            setDone(selectedTask.Done)
+        }
+    }, [selectedTask])
+
+    async function handleUpdateTask() 
+    {
+        if(!selectedTask)
+        {
+            setError("Selecine um tarefa antes.")
+            return;
+        }
+
+        const updatedTask = {
+            Task: task,
+            Date: date,
+            Done: done
+        }
+
+        await updateTask(selectedTask.id, updatedTask)
+        reloadTasks()
+    }
+
+    async function handleDeleteTask()
+    {
+        if(!selectedTask)
+        {
+            setError("Selecione uma tarefa antes")
+            return;
+        }
+        await deleteTask(selectedTask.id)
+        reloadTasks()
+
+        setTask("")
+        setDate("")
+        setDone(false)
+    }
 
     return(
         <>
             <div id="controls">
                 <button onClick={handleAddTask}>Adicionar Tarefa</button>
-                <button>Alterar Tarefa</button>
-                <button>Excluir Tarefa</button>
+                <button onClick={handleUpdateTask}>Alterar Tarefa</button>
+                <button onClick={handleDeleteTask}>Excluir Tarefa</button>
             </div>
 
             <div id="adicionarTarefa">

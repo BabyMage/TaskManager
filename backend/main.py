@@ -58,3 +58,40 @@ def add_task(task: Task):
         json.dump(data, file, indent=4)
     
     return new_task
+
+
+
+#################################################################
+
+
+@app.put("/update_task/{task_id}")
+def update_task(task_id: int, updated_task: Task ):
+    with open(FILE_PATH, "r") as file:
+        data = json.load(file)
+
+    for i, task in enumerate(data["list"]):
+        if task["id"] == task_id:
+            updated_data = updated_task.model_dump()
+            updated_data["id"] = task_id
+            data["list"][i] = updated_data
+            break
+
+    with open(FILE_PATH, "w") as file:
+        json.dump(data, file, indent=4)
+
+
+#################################################################
+
+
+@app.delete("/delete_task/{task_id}")
+def delete_task(task_id: int):
+    with open(FILE_PATH, "r") as file:
+        data = json.load(file)
+
+    # filtra removendo a tarefa com o ID
+    data["list"] = [task for task in data["list"] if task["id"] != task_id]
+
+    with open(FILE_PATH, "w") as file:
+        json.dump(data, file, indent=4)
+
+    return {"message": "Task deletada com sucesso"}
