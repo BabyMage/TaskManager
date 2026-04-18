@@ -93,18 +93,20 @@ function Controls({ reloadTasks, selectedTask })
             </div>
 
             <div id="adicionarTarefa">
+                <p>Desciçao</p>
                 <input 
                     type="text"
                     placeholder="Digite a tarefa"
                     value={task}
                     onChange={(e) => setTask(e.target.value)}
                 />
-
+                <p>Data</p>
                 <input 
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                 />
+                <p>Cuncluida?</p>
                 <input 
                     type="checkbox"
                     checked = {done}
