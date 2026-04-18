@@ -3,7 +3,6 @@
 function TableHead()
 {
     return(
-        <table>
             <thead>
                 <tr>
                     <th>Tarefa</th>
@@ -11,7 +10,6 @@ function TableHead()
                     <th>Concluída</th>
                 </tr>
             </thead>
-        </table>
     );
 };
 

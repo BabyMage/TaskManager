@@ -25,10 +25,14 @@ function App() {
       <Controls 
         reloadTasks={loadTasks}
         selectedTask={selectedTask}  />
-      <TableHead />
-      <TableBody 
-        tasks={tasks}
-        setSelectedTask={setSelectedTask}  />
+      <table>
+        <TableHead />
+        <TableBody 
+          tasks={tasks}
+          setSelectedTask={setSelectedTask}  />
+      </table>
+      
+      
     </>
   );
 };
