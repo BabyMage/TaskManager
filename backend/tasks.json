@@ -17,6 +17,12 @@
             "Date": "2026-04-18",
             "Done": false,
             "id": 5
+        },
+        {
+            "Task": "Fazer Curriculo",
+            "Date": "2026-04-18",
+            "Done": true,
+            "id": 6
         }
     ]
 }
