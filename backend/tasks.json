@@ -9,19 +9,19 @@
         {
             "Task": "Consertar Chuveiro",
             "Date": "2026-04-21",
-            "Done": false,
+            "Done": true,
             "id": 4
         },
         {
             "Task": "Lavar a lou\u00e7a",
             "Date": "2026-04-18",
-            "Done": false,
+            "Done": true,
             "id": 5
         },
         {
             "Task": "Fazer Curriculo",
             "Date": "2026-04-18",
-            "Done": true,
+            "Done": false,
             "id": 6
         }
     ]
