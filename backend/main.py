@@ -8,6 +8,7 @@ from pydantic import BaseModel
 class Task(BaseModel):
     Task: str
     Date: str
+    Category: str
     Done: bool 
 
 

@@ -16,8 +16,14 @@ function TableBody({ tasks, setSelectedTask })
                         
                     <td>{task.Task}</td>
                     <td>{task.Date}</td>
+                    <td>
+                        <span className={`tag ${task.Category}`}>
+                            {task.Category}
+                        </span>
+                    </td>
                     <td style={{ color: task.Done ? "green" : "red" }}>
-                        {task.Done ? "✅ Concluído" : "⏳ Pendente"}</td>
+                        {task.Done ? "✅Concluído" : "⏳Pendente"}
+                    </td>
 
                 </tr>
             ))}

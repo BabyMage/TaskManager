@@ -6,6 +6,7 @@ function Controls({ reloadTasks, selectedTask })
 
     const [task, setTask] = useState("");
     const [date, setDate] = useState("");
+    const [category, setCategory] = useState("");
     const [done, setDone] = useState(false);
     const [error, setError] = useState("");
 
@@ -22,11 +23,18 @@ function Controls({ reloadTasks, selectedTask })
             return;
         }
 
+        if(!category)
+        {
+            setError("A categoria é obrigatória")
+            return;
+        }
+
         setError("")
 
         const newTask = {
             Task: task,
             Date: date,
+            Category: category,
             Done: done
         }
 
@@ -62,6 +70,7 @@ function Controls({ reloadTasks, selectedTask })
         const updatedTask = {
             Task: task,
             Date: date,
+            Category: category,
             Done: done
         }
 
@@ -106,13 +115,23 @@ function Controls({ reloadTasks, selectedTask })
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                 />
+                <p>Categoria</p>
+                <select 
+                    id="dropdown"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                >
+                    <option value="">Selecione uma Categoria</option>
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Estudo">Estudo</option>
+                    <option value="Pessoal">Pessoal</option>
+                </select>
                 <p>Cuncluida?</p>
                 <input 
                     type="checkbox"
                     checked = {done}
                     onChange={(e) => setDone(e.target.checked)}
                 />
-
                 {error && <p style={{color: "red"}} id="error">{error}</p>}
             </div>
         </>
