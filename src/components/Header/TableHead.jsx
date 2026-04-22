@@ -7,6 +7,7 @@ function TableHead()
                 <tr>
                     <th>Tarefa</th>
                     <th>Data</th>
+                    <th>Categoria</th>
                     <th>Concluída</th>
                 </tr>
             </thead>

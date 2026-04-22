@@ -1,28 +1,25 @@
 {
     "list": [
         {
-            "Task": "Limpar Pia",
-            "Date": "2026-04-21",
+            "Task": "Change my Diaper",
+            "Date": "2026-04-22",
+            "Category": "Pessoal",
+            "Done": false,
+            "id": 1
+        },
+        {
+            "Task": "Finish that stupid email",
+            "Date": "2026-05-14",
+            "Category": "Trabalho",
+            "Done": false,
+            "id": 2
+        },
+        {
+            "Task": "Improve the system",
+            "Date": "2026-04-30",
+            "Category": "Estudo",
             "Done": true,
             "id": 3
-        },
-        {
-            "Task": "Consertar Chuveiro",
-            "Date": "2026-04-21",
-            "Done": true,
-            "id": 4
-        },
-        {
-            "Task": "Lavar a lou\u00e7a",
-            "Date": "2026-04-18",
-            "Done": true,
-            "id": 5
-        },
-        {
-            "Task": "Fazer Curriculo",
-            "Date": "2026-04-18",
-            "Done": false,
-            "id": 6
         }
     ]
 }
