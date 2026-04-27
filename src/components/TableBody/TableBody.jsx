@@ -1,9 +1,9 @@
 // Corpo da tabela de tarefas
-
-
+import "./TableBody.css"
 
 function TableBody({ tasks, setSelectedTask })
 {  
+
     return(
        
         <tbody>
@@ -16,16 +16,19 @@ function TableBody({ tasks, setSelectedTask })
                         
                     <td>{task.Task}</td>
                     <td>{task.Date}</td>
+                    
                     <td>
                         <span className={`tag ${task.Category}`}>
                             {task.Category}
                         </span>
                     </td>
+                    
                     <td>
                         <span className={`priority ${task.Priority}`}>
                             {task.Priority}
                         </span>
                     </td>
+                    
                     <td style={{ color: task.Done ? "green" : "red" }}>
                         {task.Done ? "✅Concluído" : "⏳Pendente"}
                     </td>

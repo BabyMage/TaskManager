@@ -30,42 +30,8 @@ body {
     background: var(--white);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 20px rgba(0,0,0,0.5);
 }
-
-input{
-    padding: 10px;
-    margin: 5px;
-    border-radius: 12px;
-    border: 1px solid var(--border)
-}
-
-button {
-  font-family: Poppins;
-  padding: 10px 14px;
-  margin-right: 16px;
-  border: none;
-  border-radius: 8px;
-  background-color: var(--primary);
-  color: white;
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-
-button:hover {
-  background-color: var(--primary-hover);
-  scale: 1.2;
-}
-
-button.delete {
-  background-color: var(--danger);
-}
-
-button.delete:hover {
-  background-color: #dc2626;
-}
-
 
 table {
   width: 100%;
@@ -91,49 +57,7 @@ tr:hover{
   background-color: #496ce0;
 }
 
-#controls{
-    margin-bottom: 15px;
-}
-
-#adicionarTarefa{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.tag {
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  color: white;
-}
-
-.Trabalho {
-  background-color: #3b82f6;
-}
-
-.Estudos {
-  background-color: #10b981;
-}
-
-.Pessoal {
-  background-color: #f59e0b;
-}
-
-.priority {
-  padding: 4px 8px;
+select{
   border-radius: 12px;
-  font-size: 12px;
-  color: white;
-}
-
-.Alta {
-  background-color: #ef4444; /* vermelho */
-}
-
-.Média {
-  background-color: #f59e0b; /* amarelo */
-}
-
-.Baixa {
-  background-color: #10b981; /* verde */
+  margin: 5px;
 }
