@@ -9,6 +9,7 @@ class Task(BaseModel):
     Task: str
     Date: str
     Category: str
+    Priority: str
     Done: bool 
 
 

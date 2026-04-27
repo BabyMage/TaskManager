@@ -8,6 +8,7 @@ function TableHead()
                     <th>Tarefa</th>
                     <th>Data</th>
                     <th>Categoria</th>
+                    <th>Prioridade</th>
                     <th>Concluída</th>
                 </tr>
             </thead>
