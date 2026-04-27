@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { addTask, updateTask, deleteTask } from "../../utils/Controller";
+import "./Controls.css"
 
-function Controls({ reloadTasks, selectedTask })
+function Controls({ reloadTasks, selectedTask, setSelectedTask })
 {
 
     const [task, setTask] = useState("");
     const [date, setDate] = useState("");
     const [category, setCategory] = useState("");
-    const [priority, setPriority] = useState("Média");
+    const [priority, setPriority] = useState("");
     const [done, setDone] = useState(false);
     const [error, setError] = useState("");
 
@@ -59,7 +60,7 @@ function Controls({ reloadTasks, selectedTask })
             setDate(selectedTask.Date)
             setDone(selectedTask.Done)
             setCategory(selectedTask.Category)
-            setPriority(selectedTask.Priority || "Média") // fallback
+            setPriority(selectedTask.Priority || "Media") // fallback
         }
     }, [selectedTask])
 
@@ -85,12 +86,13 @@ function Controls({ reloadTasks, selectedTask })
 
     async function handleDeleteTask()
     {
-        if(!selectedTask)
-        {
+        if(!selectedTask){
             setError("Selecione uma tarefa antes")
             return;
         }
         await deleteTask(selectedTask.id)
+
+        setSelectedTask(null)
         reloadTasks()
 
         setTask("")
@@ -107,10 +109,9 @@ function Controls({ reloadTasks, selectedTask })
             </div>
 
             <div id="adicionarTarefa">
-                <p>Desciçao</p>
                 <input 
                     type="text"
-                    placeholder="Digite a tarefa"
+                    placeholder="Descrição da Tarefa"
                     value={task}
                     onChange={(e) => setTask(e.target.value)}
                 />
@@ -121,18 +122,20 @@ function Controls({ reloadTasks, selectedTask })
                     onChange={(e) => setDate(e.target.value)}
                 />
 
-                <p>Categoria</p>
+                
                 <select 
                     id="dropdown"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}>
-                    <option value="">Selecione uma Categoria</option>
+                    <option value="">Categoria</option>
                     <option value="Trabalho">Trabalho</option>
                     <option value="Estudos">Estudos</option>
                     <option value="Pessoal">Pessoal</option>
                 </select>
-                <p>Prioridade</p>
+
+
                 <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+                    <option value="">Prioridade</option>
                     <option value="Baixa">Baixa</option>
                     <option value="Média">Média</option>
                     <option value="Alta">Alta</option>

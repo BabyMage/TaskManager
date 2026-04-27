@@ -9,12 +9,28 @@
             "id": 1
         },
         {
-            "Task": "Fazer curiiculo",
-            "Date": "2026-04-27",
+            "Task": "Voltar a estudar GameDev",
+            "Date": "2026-06-30",
+            "Category": "Estudos",
+            "Priority": "Baixa",
+            "Done": false,
+            "id": 3
+        },
+        {
+            "Task": "Imprimir Curriculo",
+            "Date": "2026-04-30",
             "Category": "Trabalho",
             "Priority": "Alta",
             "Done": false,
-            "id": 2
+            "id": 5
+        },
+        {
+            "Task": "Aprender Blender",
+            "Date": "2026-05-21",
+            "Category": "Estudos",
+            "Priority": "M\u00e9dia",
+            "Done": false,
+            "id": 6
         }
     ]
 }

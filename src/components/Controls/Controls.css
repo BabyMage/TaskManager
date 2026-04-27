@@ -1,0 +1,42 @@
+
+input{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 12px;
+    border: 1px solid var(--border)
+}
+
+button {
+  font-family: Poppins;
+  padding: 10px 14px;
+  margin-right: 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+
+button:hover {
+  background-color: var(--primary-hover);
+  scale: 1.2;
+}
+
+button.delete {
+  background-color: var(--danger);
+}
+
+button.delete:hover {
+  background-color: #dc2626;
+}
+
+#controls{
+    margin-bottom: 15px;
+}
+
+#adicionarTarefa{
+  display: flex;
+  flex-wrap: wrap;
+}

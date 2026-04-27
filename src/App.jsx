@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TableHead from "./components/Header/TableHead";
 import TableBody from "./components/TableBody/TableBody";
 import Controls from "./components/Controls/Controls";
-import { getTask } from "./utils/Controller";
+import { getTask as getTasks } from "./utils/Controller";
 
 
 function App() {
@@ -11,16 +11,29 @@ function App() {
   const [selectedTask, setSelectedTask] = useState(null)
 
   async function loadTasks() {
-    const data = await getTask();
-    const priorityOrder = {
+    const data = await getTasks();
+
+    const PRIORITY_ORDER = {
       Alta: 1,
-      Media: 2,
+      Média: 2,
       Baixa: 3
-    }
+    };
+
     data.sort((a, b) => {
-      return priorityOrder[a.p]
-    })
-  }
+      const priorityCompare =
+        PRIORITY_ORDER[a.Priority] - PRIORITY_ORDER[b.Priority];
+
+      if (priorityCompare !== 0) {
+        return priorityCompare;
+      }
+
+      return new Date(a.Date) - new Date(b.Date);
+    });
+
+    setTasks(data);
+}
+
+
 
   useEffect(() => {
     loadTasks();
@@ -31,17 +44,16 @@ function App() {
       <h1>Gerenciador de Tarefas</h1>
       <Controls 
         reloadTasks={loadTasks}
-        selectedTask={selectedTask}  />
+        selectedTask={selectedTask}
+        setSelectedTask={setSelectedTask}  />
       <table>
         <TableHead />
         <TableBody 
           tasks={tasks}
           setSelectedTask={setSelectedTask}  />
       </table>
-      
-      
     </>
   );
-};
+}
 
 export default App;
