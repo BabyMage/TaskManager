@@ -12,7 +12,14 @@ function App() {
 
   async function loadTasks() {
     const data = await getTask();
-    setTasks(data);
+    const priorityOrder = {
+      Alta: 1,
+      Media: 2,
+      Baixa: 3
+    }
+    data.sort((a, b) => {
+      return priorityOrder[a.p]
+    })
   }
 
   useEffect(() => {

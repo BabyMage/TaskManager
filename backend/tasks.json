@@ -1,25 +1,20 @@
 {
     "list": [
         {
-            "Task": "Change my Diaper",
-            "Date": "2026-04-22",
-            "Category": "Pessoal",
+            "Task": "Terminar o projeto",
+            "Date": "2026-04-27",
+            "Category": "Estudos",
+            "Priority": "Alta",
             "Done": false,
             "id": 1
         },
         {
-            "Task": "Finish that stupid email",
-            "Date": "2026-05-14",
+            "Task": "Fazer curiiculo",
+            "Date": "2026-04-27",
             "Category": "Trabalho",
+            "Priority": "Alta",
             "Done": false,
             "id": 2
-        },
-        {
-            "Task": "Improve the system",
-            "Date": "2026-04-30",
-            "Category": "Estudo",
-            "Done": true,
-            "id": 3
         }
     ]
 }

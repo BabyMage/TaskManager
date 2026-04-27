@@ -21,6 +21,11 @@ function TableBody({ tasks, setSelectedTask })
                             {task.Category}
                         </span>
                     </td>
+                    <td>
+                        <span className={`priority ${task.Priority}`}>
+                            {task.Priority}
+                        </span>
+                    </td>
                     <td style={{ color: task.Done ? "green" : "red" }}>
                         {task.Done ? "✅Concluído" : "⏳Pendente"}
                     </td>
