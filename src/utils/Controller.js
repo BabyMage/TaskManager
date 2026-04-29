@@ -1,6 +1,6 @@
 
 //👇 Função para mostrar tarefas (sempre roda)
-export async function getTask()
+export async function getTasks()
 {
     try 
     {
@@ -13,7 +13,8 @@ export async function getTask()
 
         const data = await response.json();
         return data.list;
-    } 
+    }
+
     catch (error)
     {
         console.log(error);
@@ -25,7 +26,8 @@ export async function getTask()
 //👇 Função de adicionar tarefas. 
 // Roda quando botão "adicionar tafefas" é clicado
 
-export async function addTask(task) {
+export async function addTask(task) 
+{
 
     try{
         const response = await fetch("http://127.0.0.1:8000/add_task", {
@@ -49,7 +51,8 @@ export async function addTask(task) {
 
 export async function updateTask(id, task)
 {
-    try{
+    try
+    {
         const response = await fetch(`http://127.0.0.1:8000/update_task/${id}`,
         {
             method: "PUT",
@@ -57,7 +60,9 @@ export async function updateTask(id, task)
             body: JSON.stringify(task),
         });
         return await response.json();   
-    }catch (error){
+    }
+    catch (error)
+    {
         console.log("Erro ao atualizar tarefa", error)
     }
 }
@@ -73,7 +78,9 @@ export async function deleteTask(id)
             method: "DELETE"
         });
         return await response.json()
-    }catch (error){
+    }
+    catch (error)
+    {
         console.log("Erro ao deletar tarefa", error)
     }
 }

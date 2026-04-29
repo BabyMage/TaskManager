@@ -2,28 +2,38 @@ import { useState, useEffect } from "react";
 import TableHead from "./components/Header/TableHead";
 import TableBody from "./components/TableBody/TableBody";
 import Controls from "./components/Controls/Controls";
-import { getTask as getTasks } from "./utils/Controller";
-
+import { getTasks } from "./utils/Controller";
+import Filters from "./components/Filters/Filters";
 
 function App() {
 
   const [tasks, setTasks] = useState([]);
-  const [selectedTask, setSelectedTask] = useState(null)
+  const [selectedTask, setSelectedTask] = useState(null);
 
-  async function loadTasks() {
+  const [search, setSearch] = useState("");
+  const [filterCategory, setFilterCategory] = useState("");
+  const [filterPriority, setFilterPriority] = useState("");
+  const [filterDone, setFilterDone] = useState("");
+
+  async function loadTasks() 
+  {
     const data = await getTasks();
 
-    const PRIORITY_ORDER = {
+    const PRIORITY_ORDER = 
+    {
       Alta: 1,
       Média: 2,
       Baixa: 3
     };
 
-    data.sort((a, b) => {
+    data.sort(
+    (a, b) => 
+    {
       const priorityCompare =
         PRIORITY_ORDER[a.Priority] - PRIORITY_ORDER[b.Priority];
 
-      if (priorityCompare !== 0) {
+      if (priorityCompare !== 0) 
+      {
         return priorityCompare;
       }
 
@@ -31,13 +41,40 @@ function App() {
     });
 
     setTasks(data);
-}
+  }
 
 
 
   useEffect(() => {
     loadTasks();
   },[]);
+
+
+const filteredTasks = tasks.filter((task) => {
+  const matchSearch = task.Task
+    .toLowerCase()
+    .includes(search.toLowerCase());
+
+  const matchCategory =
+    filterCategory === "" ||
+    task.Category === filterCategory;
+
+  const matchPriority =
+    filterPriority === "" ||
+    task.Priority === filterPriority;
+
+  const matchDone =
+    filterDone === "" ||
+    String(task.Done) === filterDone;
+
+  return (
+    matchSearch &&
+    matchCategory &&
+    matchPriority &&
+    matchDone
+  );
+});
+
 
   return(
     <>
@@ -46,10 +83,25 @@ function App() {
         reloadTasks={loadTasks}
         selectedTask={selectedTask}
         setSelectedTask={setSelectedTask}  />
+      
+      <Filters
+        search={search}
+        setSearch={setSearch}
+
+        filterCategory={filterCategory}
+        setFilterCategory={setFilterCategory}
+
+        filterPriority={filterPriority}
+        setFilterPriority={setFilterPriority}
+
+        filterDone={filterDone}
+        setFilterDone={setFilterDone}
+      />
+      <p>{filteredTasks.length} tarefas encontradas</p>
       <table>
         <TableHead />
         <TableBody 
-          tasks={tasks}
+          tasks={filteredTasks}
           setSelectedTask={setSelectedTask}  />
       </table>
     </>

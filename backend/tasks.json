@@ -5,7 +5,7 @@
             "Date": "2026-04-27",
             "Category": "Estudos",
             "Priority": "Alta",
-            "Done": false,
+            "Done": true,
             "id": 1
         },
         {
@@ -15,14 +15,6 @@
             "Priority": "Baixa",
             "Done": false,
             "id": 3
-        },
-        {
-            "Task": "Imprimir Curriculo",
-            "Date": "2026-04-30",
-            "Category": "Trabalho",
-            "Priority": "Alta",
-            "Done": false,
-            "id": 5
         },
         {
             "Task": "Aprender Blender",

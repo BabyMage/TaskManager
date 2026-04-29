@@ -44,6 +44,7 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
         try{
             await addTask(newTask)
             reloadTasks()
+            setSelectedTask(null)
         }
         catch (err){
             setError("Erro! algo deu errado")
@@ -82,6 +83,7 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
 
         await updateTask(selectedTask.id, updatedTask)
         reloadTasks()
+        setSelectedTask(null)
     }
 
     async function handleDeleteTask()
