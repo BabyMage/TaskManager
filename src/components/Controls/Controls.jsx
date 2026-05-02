@@ -50,9 +50,11 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
             setError("Erro! algo deu errado")
         }
 
-        setTask("")
-        setDate("")
-        setDone(false)
+        setTask("");
+        setDate("");
+        setDone(false);
+        setCategory("");
+        setPriority("");
     }
 
     useEffect(() => {
@@ -84,6 +86,13 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
         await updateTask(selectedTask.id, updatedTask)
         reloadTasks()
         setSelectedTask(null)
+
+        setTask("")
+        setDate("")
+        setDone(false)
+        setCategory("");
+        setPriority("");
+
     }
 
     async function handleDeleteTask()
@@ -100,6 +109,8 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
         setTask("")
         setDate("")
         setDone(false)
+        setCategory("");
+        setPriority("");
     }
 
     return(

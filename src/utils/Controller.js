@@ -17,7 +17,7 @@ export async function getTasks()
 
     catch (error)
     {
-        console.log(error);
+        console.log(`Erro no sistema ${error}`);
         return [];
     }
     
