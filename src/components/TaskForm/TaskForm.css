@@ -1,0 +1,12 @@
+input{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 12px;
+    border: 1px solid var(--border)
+}
+
+.adicionarTarefa
+{
+    display: flex;
+    flex-direction: row;
+}
