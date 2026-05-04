@@ -1,3 +1,15 @@
+button:hover {
+  background-color: var(--primary-hover);
+  scale: 1.2;
+}
+
+button.delete {
+  background-color: var(--danger);
+}
+
+button.delete:hover {
+  background-color: #dc2626;
+}
 button {
   font-family: Poppins;
   padding: 10px 14px;
@@ -8,13 +20,4 @@ button {
   color: white;
   cursor: pointer;
   transition: 0.4s;
-}
-
-#controls{
-    margin-bottom: 15px;
-}
-
-#adicionarTarefa{
-  display: flex;
-  flex-wrap: wrap;
 }

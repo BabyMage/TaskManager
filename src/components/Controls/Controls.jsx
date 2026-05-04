@@ -1,170 +1,74 @@
-import { useState, useEffect } from "react";
 import { addTask, updateTask, deleteTask } from "../../utils/Controller";
-import "./Controls.css"
+import TaskForm from "../TaskForm/TaskForm";
+import ActionButtons from "../ActionButtons/ActionButtons";
+import { useTaskForm } from "../../utils/UseTaskForms";
 
 function Controls({ reloadTasks, selectedTask, setSelectedTask })
 {
+    const form = useTaskForm(selectedTask);
 
-    const [task, setTask] = useState("");
-    const [date, setDate] = useState("");
-    const [category, setCategory] = useState("");
-    const [priority, setPriority] = useState("");
-    const [done, setDone] = useState(false);
-    const [error, setError] = useState("");
-
-
-    async function handleAddTask() {
-
-        if(!task.trim()){
-            setError("A tarefa não pode ser vazia");
-            return;
-        }
-
-        if(!date){
-            setError("A data é obrigatoria")
-            return;
-        }
-
-        if(!category)
+    async function handleAdd()
+    {
+        if (!form.task.trim())
         {
-            setError("A categoria é obrigatória")
+            form.setError("A tarefa não pode ser vazia")
             return;
         }
 
-        setError("")
 
         const newTask = {
-            Task: task,
-            Date: date,
-            Category: category,
-            Priority: priority,
-            Done: done
-        }
+            Task: form.Task,
+            Date: form.Date,
+            Category: form.Category,
+            Priority: form.Priority,
+            Done: form.done
+        };
 
-        try{
-            await addTask(newTask)
-            reloadTasks()
-            setSelectedTask(null)
-        }
-        catch (err){
-            setError("Erro! algo deu errado")
-        }
-
-        setTask("");
-        setDate("");
-        setDone(false);
-        setCategory("");
-        setPriority("");
+        await addTask(newTask);
+        reloadTasks();
+        setSelectedTask(null);
+        form.resetForm();
     }
 
-    useEffect(() => {
-        if(selectedTask){
-            setTask(selectedTask.Task)
-            setDate(selectedTask.Date)
-            setDone(selectedTask.Done)
-            setCategory(selectedTask.Category)
-            setPriority(selectedTask.Priority || "Media") // fallback
-        }
-    }, [selectedTask])
-
-    async function handleUpdateTask() 
+    async function handleUpdate()
     {
-        if(!selectedTask)
-        {
-            setError("Selecine um tarefa antes.")
-            return;
-        }
-
+        if (!selectedTask) return;
+        
         const updatedTask = {
-            Task: task,
-            Date: date,
-            Category: category,
-            Priority: priority,
-            Done: done
-        }
+            Task: form.task,
+            Date: form.Date,
+            Category: form.Category,
+            Priority: form.Priority,
+            Done: form.Done
+        };
+        
+        await updateTask(selectedTask.id, updatedTask);
+        reloadTasks();
+        setSelectedTask(null);
+        form.resetForm();
+    };
 
-        await updateTask(selectedTask.id, updatedTask)
-        reloadTasks()
-        setSelectedTask(null)
-
-        setTask("")
-        setDate("")
-        setDone(false)
-        setCategory("");
-        setPriority("");
-
-    }
-
-    async function handleDeleteTask()
+    async function handleDelete() 
     {
-        if(!selectedTask){
-            setError("Selecione uma tarefa antes")
-            return;
-        }
-        await deleteTask(selectedTask.id)
+        if(!selectedTask) return;
 
-        setSelectedTask(null)
-        reloadTasks()
-
-        setTask("")
-        setDate("")
-        setDone(false)
-        setCategory("");
-        setPriority("");
-    }
+        await deleteTask(selectedTask.id);
+        reloadTasks();
+        setSelectedTask(null);
+        form.resetForm();
+    };
 
     return(
         <>
-            <div id="controls">
-                <button onClick={handleAddTask}>Adicionar Tarefa</button>
-                <button onClick={handleUpdateTask}>Alterar Tarefa</button>
-                <button onClick={handleDeleteTask}>Excluir Tarefa</button>
-            </div>
+            <ActionButtons
+                onAdd={handleAdd}
+                onUpdate={handleUpdate}
+                onDelete={handleDelete} 
+            />
 
-            <div id="adicionarTarefa">
-                <input 
-                    type="text"
-                    placeholder="Descrição da Tarefa"
-                    value={task}
-                    onChange={(e) => setTask(e.target.value)}
-                />
-                <p>Data</p>
-                <input 
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                />
-
-                
-                <select 
-                    id="dropdown"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}>
-                    <option value="">Categoria</option>
-                    <option value="Trabalho">Trabalho</option>
-                    <option value="Estudos">Estudos</option>
-                    <option value="Pessoal">Pessoal</option>
-                </select>
-
-
-                <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-                    <option value="">Prioridade</option>
-                    <option value="Baixa">Baixa</option>
-                    <option value="Média">Média</option>
-                    <option value="Alta">Alta</option>
-                </select>
-
-                <p>Cuncluida?</p>
-                <input 
-                    type="checkbox"
-                    checked = {done}
-                    onChange={(e) => setDone(e.target.checked)}
-                />
-                {error && <p style={{color: "red"}} id="error">{error}</p>}
-            </div>
+            <TaskForm {...form}/>
         </>
-
-    )
-}
+    );
+};
 
 export default Controls;
