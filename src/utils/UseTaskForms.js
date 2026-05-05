@@ -10,11 +10,11 @@ export function useTaskForm(selectedTask) {
 
   useEffect(() => {
     if (selectedTask) {
-      setTask(selectedTask.Task);
-      setDate(selectedTask.Date);
-      setCategory(selectedTask.Category);
-      setPriority(selectedTask.Priority || "Média");
-      setDone(selectedTask.Done);
+      setTask(selectedTask.task);
+      setDate(selectedTask.date);
+      setCategory(selectedTask.category);
+      setPriority(selectedTask.priority || "Média");
+      setDone(selectedTask.done);
     }
   }, [selectedTask]);
 

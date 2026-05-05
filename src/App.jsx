@@ -30,14 +30,14 @@ function App() {
     (a, b) => 
     {
       const priorityCompare =
-        PRIORITY_ORDER[a.Priority] - PRIORITY_ORDER[b.Priority];
+        PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.Priority];
 
       if (priorityCompare !== 0) 
       {
         return priorityCompare;
       }
 
-      return new Date(a.Date) - new Date(b.Date);
+      return new Date(a.date) - new Date(b.Date);
     });
 
     setTasks(data);
@@ -51,21 +51,21 @@ function App() {
 
 
 const filteredTasks = tasks.filter((task) => {
-  const matchSearch = task.Task
+  const matchSearch = task.task
     .toLowerCase()
     .includes(search.toLowerCase());
 
   const matchCategory =
     filterCategory === "" ||
-    task.Category === filterCategory;
+    task.category === filterCategory;
 
   const matchPriority =
     filterPriority === "" ||
-    task.Priority === filterPriority;
+    task.priority === filterPriority;
 
   const matchDone =
     filterDone === "" ||
-    String(task.Done) === filterDone;
+    String(task.done) === filterDone;
 
   return (
     matchSearch &&

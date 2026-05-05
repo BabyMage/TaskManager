@@ -9,7 +9,7 @@ class Task(BaseModel):
     Task: str
     Date: str
     Category: str
-    Priority: str
+    Priority: str | None = "Média"
     Done: bool 
 
 
