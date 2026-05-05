@@ -1,6 +1,8 @@
 // Corpo da tabela de tarefas
 import "./TableBody.css"
 
+import { getTaskStatus } from "../../utils/DateManager"
+
 function TableBody({ tasks, setSelectedTask })
 {  
 
@@ -33,6 +35,15 @@ function TableBody({ tasks, setSelectedTask })
                         {task.Done ? "✅Concluído" : "⏳Pendente"}
                     </td>
 
+                    <td>
+                        <span
+                        style={{
+                            fontSize: "12px",
+                            color: getTaskStatus(task.date).color
+                        }}>
+                            {getTaskStatus(task.date).label}
+                        </span>
+                    </td>
                 </tr>
             ))}
         </tbody>      

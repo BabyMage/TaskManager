@@ -4,6 +4,7 @@ export async function getTasks()
 {
     try 
     {
+        
         const response = await fetch("http://127.0.0.1:8000/tasks");
 
         if(!response.ok)
@@ -30,6 +31,8 @@ export async function addTask(task)
 {
 
     try{
+
+
         const response = await fetch("http://127.0.0.1:8000/add_task", {
             method: "POST",
             headers: {

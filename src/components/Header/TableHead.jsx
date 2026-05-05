@@ -10,6 +10,7 @@ function TableHead()
                     <th>Categoria</th>
                     <th>Prioridade</th>
                     <th>Concluída</th>
+                    <th>Status</th>
                 </tr>
             </thead>
     );

@@ -13,14 +13,19 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
         {
             form.setError("A tarefa não pode ser vazia")
             return;
+        };
+
+        if (!form.priority) {
+            form.setError("A prioridade é obrigatória");
+            return;
         }
 
 
         const newTask = {
-            Task: form.Task,
-            Date: form.Date,
-            Category: form.Category,
-            Priority: form.Priority,
+            Task: form.task,
+            Date: form.date,
+            Category: form.category,
+            Priority: form.priority,
             Done: form.done
         };
 
@@ -36,10 +41,10 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
         
         const updatedTask = {
             Task: form.task,
-            Date: form.Date,
-            Category: form.Category,
-            Priority: form.Priority,
-            Done: form.Done
+            Date: form.date,
+            Category: form.category,
+            Priority: form.priority,
+            Done: form.done
         };
         
         await updateTask(selectedTask.id, updatedTask);
