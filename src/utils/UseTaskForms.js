@@ -9,14 +9,14 @@ export function useTaskForm(selectedTask) {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (selectedTask) {
-      setTask(selectedTask.task);
-      setDate(selectedTask.date);
-      setCategory(selectedTask.category);
-      setPriority(selectedTask.priority || "Média");
-      setDone(selectedTask.done);
-    }
-  }, [selectedTask]);
+  if (selectedTask) {
+    setTask(selectedTask.Task);
+    setDate(selectedTask.Date);
+    setCategory(selectedTask.Category);
+    setPriority(selectedTask.Priority || "Média");
+    setDone(selectedTask.Done);
+  }
+}, [selectedTask]);
 
   function resetForm() {
     setTask("");
