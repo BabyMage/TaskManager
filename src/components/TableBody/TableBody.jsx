@@ -5,7 +5,6 @@ import { getTaskStatus } from "../../utils/DateManager"
 
 function TableBody({ tasks, setSelectedTask })
 {  
-
     return(
        
         <tbody>
@@ -39,9 +38,10 @@ function TableBody({ tasks, setSelectedTask })
                         <span
                         style={{
                             fontSize: "12px",
-                            color: getTaskStatus(task.date).color
-                        }}>
-                            {getTaskStatus(task.date).label}
+                            background: getTaskStatus(task.Date).color}}
+        
+                        className={`date-status ${status.color}`}>
+                            {getTaskStatus(task.Date).label}
                         </span>
                     </td>
                 </tr>
@@ -49,4 +49,4 @@ function TableBody({ tasks, setSelectedTask })
         </tbody>      
 )}
 
-export default TableBody
+export default TableBody;

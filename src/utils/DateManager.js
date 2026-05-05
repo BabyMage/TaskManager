@@ -3,7 +3,7 @@ export function getTaskStatus(dateString)
     if(!dateString) return { label: "Sem Data", color: "gray" };
 
     const [year, month, day] = dateString.split("-");
-    const taskDate = new Date(year, month, day);
+    const taskDate = new Date(year, month - 1, day);
 
     const today = new Date();
 

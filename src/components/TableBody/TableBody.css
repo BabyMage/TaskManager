@@ -45,7 +45,7 @@
   color: white;
 }
 
-.date-status.red { background: #ef4444; }
-.date-status.orange { background: #f59e0b; }
-.date-status.gold { background: #eab308; }
-.date-status.green { background: #10b981; }
+.date-status-red { background: #ef4444; }
+.date-status-orange { background: #f59e0b; }
+.date-status-gold { background: #eab308; }
+.date-status-green { background: #10b981; }
