@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+
+
 # 📦 Modelo da tarefa
 class Task(BaseModel):
     Task: str

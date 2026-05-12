@@ -6,7 +6,6 @@ import { getTaskStatus } from "../../utils/DateManager"
 function TableBody({ tasks, setSelectedTask })
 {  
     return(
-       
         <tbody>
             {tasks.map((task) =>(
                 <tr 
