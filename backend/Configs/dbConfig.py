@@ -27,5 +27,4 @@ except mysql.connector.Error as error:
 def get_connection():
     if connection is None:
         raise Exception("Erro na conexão")
-
     return connection.get_connection()
