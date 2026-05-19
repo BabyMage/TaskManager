@@ -1,4 +1,4 @@
-from Configs.dbConfig import get_connection
+from backend.Configs.dbConfig import get_connection
 
 class TaskModel():
 
@@ -19,7 +19,6 @@ class TaskModel():
     def create_task(self, task, date, priority, category, done):
         conn = get_connection()
         cursor = conn.cursor(dictionary=True)
-
         query = """
                 INSERT INTO tasks 
                 (Task, Date, Priority, Category, Done) 
@@ -27,8 +26,8 @@ class TaskModel():
                 """
         values = (task, date, priority, category, done)
         
+        
         cursor.execute(query, values)
-
         conn.commit()
         
         created_rows = cursor.rowcount
@@ -39,11 +38,36 @@ class TaskModel():
         return created_rows
 
 
-    def update_task(id):
-        pass
+
+
+    def update_task(self, task, date, priority, category, done, id):
+        conn = get_connection()
+        cursor = conn.cursor(dictionary = True)
+        query = """
+                UPDATE tasks
+                SET task = %s, date = %s, priority = %s, category = %s, done = %s
+                WHERE id = %s
+                """
+        values = (task, date, priority, category, done, id)
+        
+        cursor.execute(query, values)
+        conn.commit()
+
+        uptaded_rows = cursor.rowcount
+
+        cursor.close()
+        conn.close()
+
+        return uptaded_rows
+
 
 
     def delete_tas(id):
         pass
 
-TaskModel.get_task()
+
+model = TaskModel()
+
+model.update_task("Limpar", "2026-05-05", "Alta", "Pessoal", False, 1)
+
+print(model.get_task())

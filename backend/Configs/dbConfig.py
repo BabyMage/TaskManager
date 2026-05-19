@@ -18,7 +18,6 @@ try:
         database=os.getenv("DB_NAME"),
         port=os.getenv("DB_PORT")
     )
-    print("Conexão criada com sucesso!")
 
 except mysql.connector.Error as error:
     print(f"Erro ao iniciar conexão: {error}")
