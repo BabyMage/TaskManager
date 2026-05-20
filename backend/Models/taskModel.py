@@ -2,7 +2,7 @@ from backend.Configs.dbConfig import get_connection
 
 class TaskModel():
 
-    def get_task(self):
+    def get_tasks(self):
         conn = get_connection()
         cursor = conn.cursor(dictionary=True)
 
@@ -45,7 +45,7 @@ class TaskModel():
         cursor = conn.cursor(dictionary = True)
         query = """
                 UPDATE tasks
-                SET task = %s, date = %s, priority = %s, category = %s, done = %s
+                SET Task = %s, Date = %s, Priority = %s, Category = %s, Done = %s
                 WHERE id = %s
                 """
         values = (task, date, priority, category, done, id)
@@ -62,12 +62,18 @@ class TaskModel():
 
 
 
-    def delete_tas(id):
-        pass
+    def delete_task(self, id):
+        conn = get_connection()
+        cursor = conn.cursor(dictionary = True)
+        query = "DELETE FROM tasks WHERE id = %s"
+        value = (id, )
 
+        cursor.execute(query, value)
+        conn.commit()
 
-model = TaskModel()
+        updated_table = cursor.rowcount
 
-model.update_task("Limpar", "2026-05-05", "Alta", "Pessoal", False, 1)
+        cursor.close()
+        conn.close()
 
-print(model.get_task())
+        return updated_table
