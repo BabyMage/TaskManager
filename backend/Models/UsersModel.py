@@ -1,36 +1,30 @@
 from backend.Configs.DBConfig import get_connection
 
-class TaskModel():
+class UsersModel():
 
-    def get_tasks(self, user_id):
+    def get_users(self):
         conn = get_connection()
         cursor = conn.cursor(dictionary=True)
 
-        query = """
-                SELECT * FROM tasks
-                WHERE user_id = %s
-                """
-        value = (user_id,)
+        cursor.execute("SELECT * FROM users")
 
-        cursor.execute(query, value)
-
-        tasks = cursor.fetchall()
+        users = cursor.fetchall()
 
         cursor.close()
         conn.close()
 
-        return tasks
+        return users
 
 
-    def create_task(self, task, date, priority, category, done, user_id):
+    def create_user(self, user_name, email, password):
         conn = get_connection()
         cursor = conn.cursor(dictionary=True)
         query = """
-                INSERT INTO tasks 
-                (task, date, priority, category, done, user_id) 
-                VALUES(%s, %s, %s, %s, %s)
+                INSERT INTO users 
+                (username, email, senha) 
+                VALUES(%s, %s, %s)
                 """
-        values = (task, date, priority, category, done, user_id)
+        values = (user_name, email, password)
         
         
         cursor.execute(query, values)
@@ -46,15 +40,15 @@ class TaskModel():
 
 
 
-    def update_task(self, task, date, priority, category, done, user_id, id,):
+    def update_users(self, username, email, password):
         conn = get_connection()
         cursor = conn.cursor(dictionary = True)
         query = """
                 UPDATE tasks
-                SET task = %s, date = %s, priority = %s, category = %s, done = %s, user_id = %s
+                SET username = %s, email = %s, senha = %s, 
                 WHERE id = %s
                 """
-        values = (task, date, priority, category, done, user_id, id)
+        values = (username, email, password)
         
         cursor.execute(query, values)
         conn.commit()
@@ -68,11 +62,11 @@ class TaskModel():
 
 
 
-    def delete_task(self, id):
+    def delete_user(self, id):
         conn = get_connection()
         cursor = conn.cursor(dictionary = True)
-        query = "DELETE FROM tasks WHERE id = %s"
-        value = (id, )
+        query = "DELETE FROM users WHERE id = %s"
+        value = (id,)
 
         cursor.execute(query, value)
         conn.commit()
