@@ -4,12 +4,10 @@ from backend.Models.TaskModel import TaskModel
 class TaskController():
     def __init__(self):
         self.model = TaskModel()
-        
     
     
     def get_tasks(self):
         return self.model.get_tasks()
-
 
 
     def create_task(self, task_data):
@@ -47,7 +45,6 @@ class TaskController():
             id
         )
     
-
 
     def delete_task(self, id):
         return self.model.delete_task(id)
