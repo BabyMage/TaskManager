@@ -2,18 +2,24 @@ from backend.Configs.DBConfig import get_connection
 
 class UsersModel():
 
-    def get_users(self):
+
+    def get_user_by_email(self, email):
+
         conn = get_connection()
         cursor = conn.cursor(dictionary=True)
 
-        cursor.execute("SELECT * FROM users")
+        query = "SELECT * FROM users WHERE email = %s"
 
-        users = cursor.fetchall()
+        cursor.execute(query, (email,))
+
+        user = cursor.fetchone()
 
         cursor.close()
         conn.close()
 
-        return users
+        return user
+
+
 
 
     def create_user(self, user_name, email, password):
@@ -40,15 +46,15 @@ class UsersModel():
 
 
 
-    def update_users(self, username, email, password):
+    def update_users(self, username, email, password, id):
         conn = get_connection()
         cursor = conn.cursor(dictionary = True)
         query = """
-                UPDATE tasks
-                SET username = %s, email = %s, senha = %s, 
+                UPDATE users
+                SET username = %s, email = %s, senha = %s
                 WHERE id = %s
                 """
-        values = (username, email, password)
+        values = (username, email, password, id)
         
         cursor.execute(query, values)
         conn.commit()

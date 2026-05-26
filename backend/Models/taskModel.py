@@ -22,6 +22,7 @@ class TaskModel():
         return tasks
 
 
+
     def create_task(self, task, date, priority, category, done, user_id):
         conn = get_connection()
         cursor = conn.cursor(dictionary=True)
