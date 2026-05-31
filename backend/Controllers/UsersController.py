@@ -3,8 +3,11 @@ import backend.Security.hash as hash_handler
 import backend.Security.jwt_handler as token_handler
 
 class UserController():
+
     def __init__(self):
         self.model = UsersModel()
+
+    
 
     def login(self, user_data):
         user = self.model.get_user_by_email(
@@ -32,16 +35,59 @@ class UserController():
         })
 
         return {
-            "access_token": token
+            "access_token": token,
+            "token_type": "bearer"
+            
         }
 
+    
+    
     def create_user(self, user_data):
         hashed_password = hash_handler.hash_password(
             user_data.password
         )
+
+        existing_email = self.model.get_user_by_email(user_data.email)
+        if existing_email:
+            return{
+                "error": "Erro! Esse email ja está cadastrado"
+            }
 
         return self.model.create_user(
             user_data.username,
             user_data.email,
             hashed_password
         )
+
+
+
+    def update_user(self, user_id, user_data):
+        
+        password = None
+
+        if user_data.password:
+            password = hash_handler.hash_password(
+                user_data.password
+            )
+        
+        existing_email = self.model.get_user_by_email(user_data.email)
+        if existing_email and existing_email["id"] != user_id:
+            return{
+                "error": "Erro! Esse email ja está cadastrado em outro usuario"
+            }
+        
+        current_password = self.model.get_user_by_email(user_data.email)
+        if not password:
+            password = current_password
+
+        return self.model.update_users(
+            user_id,
+            user_data.username,
+            user_data.email,
+            password
+        )
+    
+
+    
+    def delete_user(self, id):
+        return self.model.delete_user(id)
