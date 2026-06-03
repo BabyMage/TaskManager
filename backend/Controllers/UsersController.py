@@ -21,7 +21,7 @@ class UserController():
 
         password_correct = hash_handler.verify_password(
             user_data.password,
-            user["senha"]
+            user["password"]
         )   
 
         if not password_correct:
@@ -36,9 +36,13 @@ class UserController():
 
         return {
             "access_token": token,
-            "token_type": "bearer"
-            
-        }
+            "token_type": "bearer",
+            "user": {
+                "id": user["id"],
+                "username": user["username"],
+                "email": user["email"]
+                }
+            }
 
     
     
@@ -76,18 +80,32 @@ class UserController():
                 "error": "Erro! Esse email ja está cadastrado em outro usuario"
             }
         
-        current_password = self.model.get_user_by_email(user_data.email)
-        if not password:
-            password = current_password
+        current_user = self.model.get_user_by_id(user_id)
 
-        return self.model.update_users(
-            user_id,
+        if not current_user:
+            return {
+                "error": "Erro! Usuario não encotrado"
+            }
+        
+        if not password:
+            password = current_user["password"]
+
+        return self.model.update_user(
             user_data.username,
             user_data.email,
-            password
+            password,
+            user_id
         )
     
 
     
     def delete_user(self, id):
+
+        user = self.model.get_user_by_id(id)
+
+        if not user:
+            return {
+                "error": "Erro! Usuario não encotrado"
+            }
+        
         return self.model.delete_user(id)
