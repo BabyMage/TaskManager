@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 from jose import jwt, JWTError
 import os
@@ -12,7 +12,7 @@ ALGORITHM = os.getenv("ALGORITHM")
 def create_token(data: dict) -> str:
     payload = data.copy()
 
-    expiration = datetime.utcnow() + timedelta(hours=2)
+    expiration = datetime.now(timezone.utc) + timedelta(hours=2)
 
     payload.update({
             "exp": expiration   

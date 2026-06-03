@@ -2,6 +2,21 @@ from backend.Configs.DBConfig import get_connection
 
 class UsersModel():
 
+    def get_user_by_id(self, user_id):
+        conn = get_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        query = "SELECT * FROM users WHERE id = %s"
+
+        cursor.execute(query, (user_id,))
+
+        user = cursor.fetchone()
+
+        cursor.close()
+        conn.close()
+
+        return user
+
 
     def get_user_by_email(self, email):
 
@@ -27,7 +42,7 @@ class UsersModel():
         cursor = conn.cursor(dictionary=True)
         query = """
                 INSERT INTO users 
-                (username, email, senha) 
+                (username, email, password) 
                 VALUES(%s, %s, %s)
                 """
         values = (user_name, email, password)
@@ -46,12 +61,12 @@ class UsersModel():
 
 
 
-    def update_users(self, username, email, password, id):
+    def update_user(self, username, email, password, id):
         conn = get_connection()
         cursor = conn.cursor(dictionary = True)
         query = """
                 UPDATE users
-                SET username = %s, email = %s, senha = %s
+                SET username = %s, email = %s, password = %s
                 WHERE id = %s
                 """
         values = (username, email, password, id)

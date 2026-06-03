@@ -22,4 +22,4 @@ CREATE TABLE tasks(
     ON DELETE CASCADE
 );
 
-
+SELECT * FROM users;
