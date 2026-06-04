@@ -7,7 +7,6 @@ class UserController():
     def __init__(self):
         self.model = UsersModel()
 
-    
 
     def login(self, user_data):
         user = self.model.get_user_by_email(
