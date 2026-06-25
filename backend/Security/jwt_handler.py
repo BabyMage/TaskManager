@@ -2,8 +2,10 @@ from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 from jose import jwt, JWTError
 import os
+from pathlib import Path
 
-load_dotenv()
+env_path = Path(__file__).resolve().parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
