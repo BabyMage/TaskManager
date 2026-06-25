@@ -1,4 +1,4 @@
-from fastapi import Header
+from fastapi import Header, HTTPException
 from backend.Security.jwt_handler import verify_token
 from backend.Models.UsersModel import UsersModel
 
@@ -15,7 +15,10 @@ def get_current_user(authorization: str = Header()):
     payload = verify_token(token)
 
     if not payload:
-        return None
+        raise HTTPException(
+            status_code = 401,
+            detail = "Token Invalido"
+        )
     
     user = model.get_user_by_id(
         payload["user_id"]

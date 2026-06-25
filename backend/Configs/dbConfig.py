@@ -1,9 +1,11 @@
 import mysql.connector
 from mysql.connector import pooling
 from dotenv import load_dotenv
+from pathlib import Path
 import os
 
-load_dotenv()
+env_path = Path(__file__).resolve().parent.parent / ".env" # .parent DUAS vezes
+load_dotenv(dotenv_path=env_path)
 
 connection = None
 
@@ -15,7 +17,7 @@ try:
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
         database=os.getenv("DB_NAME"),
-        port=os.getenv("DB_PORT")
+        port = os.getenv("DB_PORT")
     )
 
 except mysql.connector.Error as error:

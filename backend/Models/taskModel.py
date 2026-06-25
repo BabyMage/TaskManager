@@ -47,7 +47,7 @@ class TaskModel():
 
 
 
-    def update_task(self, task, date, priority, category, done, id,):
+    def update_task(self, task, date, priority, category, done, id):
         conn = get_connection()
         cursor = conn.cursor(dictionary = True)
         query = """

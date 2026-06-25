@@ -10,7 +10,7 @@ class TaskController():
         return self.model.get_tasks(user_id)
 
 
-    def create_task(self, task_data):
+    def create_task(self, task_data, user_id):
 
         task = task_data.task.strip().title()
 
@@ -24,6 +24,7 @@ class TaskController():
             task_data.priority,
             task_data.category,
             task_data.done,
+            user_id
         )
     
 
