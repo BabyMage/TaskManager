@@ -6,13 +6,13 @@ class TaskController():
         self.model = TaskModel()
     
     
-    def get_tasks(self):
-        return self.model.get_tasks()
+    def get_tasks(self, user_id):
+        return self.model.get_tasks(user_id)
 
 
     def create_task(self, task_data):
 
-        task = task_data.task.strip.title()
+        task = task_data.task.strip().title()
 
         valid_priorities = ["Alta", "Média", "Baixa"]
         if task_data.priority not in valid_priorities:
@@ -23,14 +23,14 @@ class TaskController():
             task_data.date,
             task_data.priority,
             task_data.category,
-            task_data.done
+            task_data.done,
         )
     
 
 
     def update_tasks(self, task_data, id):
 
-        task = task_data.task.strip.title()
+        task = task_data.task.strip().title()
 
         valid_priorities = ["Alta", "Média", "Baixa"]
         if task_data.priority not in valid_priorities:
@@ -42,7 +42,7 @@ class TaskController():
             task_data.priority,
             task_data.category,
             task_data.done,
-            id
+            id,
         )
     
 
