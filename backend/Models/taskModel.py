@@ -29,7 +29,7 @@ class TaskModel():
         query = """
                 INSERT INTO tasks 
                 (task, date, priority, category, done, user_id) 
-                VALUES(%s, %s, %s, %s, %s)
+                VALUES(%s, %s, %s, %s, %s, %s)
                 """
         values = (task, date, priority, category, done, user_id)
         
@@ -47,15 +47,15 @@ class TaskModel():
 
 
 
-    def update_task(self, task, date, priority, category, done, user_id, id,):
+    def update_task(self, task, date, priority, category, done, id,):
         conn = get_connection()
         cursor = conn.cursor(dictionary = True)
         query = """
                 UPDATE tasks
-                SET task = %s, date = %s, priority = %s, category = %s, done = %s, user_id = %s
+                SET task = %s, date = %s, priority = %s, category = %s, done = %s
                 WHERE id = %s
                 """
-        values = (task, date, priority, category, done, user_id, id)
+        values = (task, date, priority, category, done, id)
         
         cursor.execute(query, values)
         conn.commit()
