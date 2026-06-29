@@ -39,5 +39,6 @@ def verify_token(token: str):
 
         return payload
     
-    except JWTError:
+    except JWTError as error:
+        print("ERRO JWT:", error)
         return None
