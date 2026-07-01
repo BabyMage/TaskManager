@@ -1,6 +1,7 @@
 from backend.Models.UsersModel import UsersModel
 import backend.Security.hash as hash_handler
 import backend.Security.jwt_handler as token_handler
+from fastapi import HTTPException
 
 class UserController():
 
@@ -14,9 +15,10 @@ class UserController():
         )
 
         if not user:
-            return {
-                "error": "Usuário não encontrado"
-            }
+            raise HTTPException(
+                status_code=404,
+                detail="Usuário não encontrado"
+            )
 
         password_correct = hash_handler.verify_password(
             user_data.password,
@@ -24,9 +26,10 @@ class UserController():
         )   
 
         if not password_correct:
-            return {
-                "error": "Senha incorreta"
-            }
+            raise HTTPException(
+                status_code=400,
+                detail="Senha Incorreta"
+            )
 
         token = token_handler.create_token({
             "user_id": user["id"],
@@ -52,9 +55,10 @@ class UserController():
 
         existing_email = self.model.get_user_by_email(user_data.email)
         if existing_email:
-            return{
-                "error": "Erro! Esse email ja está cadastrado"
-            }
+            raise HTTPException(
+                status_code=409,
+                detail="Esse email ja está cadastrado"
+            )
 
         return self.model.create_user(
             user_data.username,
@@ -75,16 +79,18 @@ class UserController():
         
         existing_email = self.model.get_user_by_email(user_data.email)
         if existing_email and existing_email["id"] != user_id:
-            return{
-                "error": "Erro! Esse email ja está cadastrado em outro usuario"
-            }
+            raise HTTPException(
+                status_code=409,
+                detail="Erro! Esse email ja está cadastrado em outro usuario"
+            )
         
         current_user = self.model.get_user_by_id(user_id)
 
         if not current_user:
-            return {
-                "error": "Erro! Usuario não encotrado"
-            }
+            raise HTTPException(
+                status_code=404,
+                detail="Usuario não encontrado"
+            )
         
         if not password:
             password = current_user["password"]
@@ -103,8 +109,9 @@ class UserController():
         user = self.model.get_user_by_id(id)
 
         if not user:
-            return {
-                "error": "Erro! Usuario não encotrado"
-            }
+            raise HTTPException(
+                status_code=404,
+                detail="Usuario não encontrado"
+            )
         
         return self.model.delete_user(id)
