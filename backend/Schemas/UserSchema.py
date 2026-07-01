@@ -15,3 +15,8 @@ class UserUpdateSchema(BaseModel):
     username: str = Field(min_length=3, max_length=50)
     email: EmailStr
     password: str |  None = None
+
+class UserResponseSchema(BaseModel):
+    id: int
+    username: str
+    email: EmailStr

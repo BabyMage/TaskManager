@@ -1,4 +1,5 @@
 from backend.Models.TaskModel import TaskModel
+from fastapi import HTTPException
 
 
 class TaskController():
@@ -12,12 +13,16 @@ class TaskController():
 
     def create_task(self, task_data, user_id):
 
-        task = task_data.task.strip().title()
 
         valid_priorities = ["Alta", "Média", "Baixa"]
         if task_data.priority not in valid_priorities:
-            raise ValueError("Prioridade Invalida")
+            raise HTTPException(
+                status_code=400,
+                detail="Prioridade inválida"
+            )
 
+        task = task_data.task.strip().title()
+        
         return self.model.create_task(
             task,
             task_data.date,
@@ -29,13 +34,16 @@ class TaskController():
     
 
 
-    def update_tasks(self, task_data, id):
+    def update_tasks(self, id, task_data, user_id):
 
         task = task_data.task.strip().title()
 
         valid_priorities = ["Alta", "Média", "Baixa"]
         if task_data.priority not in valid_priorities:
-            raise ValueError("Prioridade Invalida")
+            raise HTTPException(
+                status_code=400,
+                detail="Prioridade inválida"
+            )
 
         return self.model.update_task(
             task,
@@ -44,8 +52,9 @@ class TaskController():
             task_data.category,
             task_data.done,
             id,
+            user_id
         )
     
 
-    def delete_task(self, id):
-        return self.model.delete_task(id)
+    def delete_task(self, id, user_id):
+        return self.model.delete_task(id, user_id)

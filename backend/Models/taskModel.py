@@ -47,15 +47,15 @@ class TaskModel():
 
 
 
-    def update_task(self, task, date, priority, category, done, id):
+    def update_task(self, task, date, priority, category, done, id, user_id):
         conn = get_connection()
         cursor = conn.cursor(dictionary = True)
         query = """
                 UPDATE tasks
                 SET task = %s, date = %s, priority = %s, category = %s, done = %s
-                WHERE id = %s
+                WHERE id = %s AND user_id = %s
                 """
-        values = (task, date, priority, category, done, id)
+        values = (task, date, priority, category, done, id, user_id)
         
         cursor.execute(query, values)
         conn.commit()
@@ -69,11 +69,11 @@ class TaskModel():
 
 
 
-    def delete_task(self, id):
+    def delete_task(self, id, user_id):
         conn = get_connection()
         cursor = conn.cursor(dictionary = True)
-        query = "DELETE FROM tasks WHERE id = %s"
-        value = (id, )
+        query = "DELETE FROM tasks WHERE id = %s AND user_id = %s"
+        value = (id, user_id,)
 
         cursor.execute(query, value)
         conn.commit()
