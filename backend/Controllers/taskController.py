@@ -13,7 +13,6 @@ class TaskController():
 
     def create_task(self, task_data, user_id):
 
-
         valid_priorities = ["Alta", "Média", "Baixa"]
         if task_data.priority not in valid_priorities:
             raise HTTPException(
@@ -23,7 +22,7 @@ class TaskController():
 
         task = task_data.task.strip().title()
         
-        return self.model.create_task(
+        created_task = self.model.create_task(
             task,
             task_data.date,
             task_data.priority,
@@ -31,12 +30,15 @@ class TaskController():
             task_data.done,
             user_id
         )
+
+        return {
+            'message': 'Tarefa criada com sucesso'
+        }
     
 
 
     def update_tasks(self, id, task_data, user_id):
 
-        task = task_data.task.strip().title()
 
         valid_priorities = ["Alta", "Média", "Baixa"]
         if task_data.priority not in valid_priorities:
@@ -45,7 +47,8 @@ class TaskController():
                 detail="Prioridade inválida"
             )
 
-        return self.model.update_task(
+        task = task_data.task.strip().title()
+        updated_task = self.model.update_task(
             task,
             task_data.date,
             task_data.priority,
@@ -54,7 +57,15 @@ class TaskController():
             id,
             user_id
         )
+        
+        return{
+            'message': 'Tarefa atualizada com sucesso'
+        }
     
 
     def delete_task(self, id, user_id):
-        return self.model.delete_task(id, user_id)
+        deleted_task = self.model.delete_task(id, user_id)
+
+        return{
+            'message': 'Tarefa deletada com sucesso'
+        }
