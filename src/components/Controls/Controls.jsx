@@ -1,4 +1,4 @@
-import { addTask, updateTask, deleteTask } from "../../utils/Controller";
+import { addTask, updateTask, deleteTask } from "../../Services/Controller";
 import TaskForm from "../TaskForm/TaskForm";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import { useTaskForm } from "../../utils/UseTaskForms";

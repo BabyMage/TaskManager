@@ -1,8 +1,10 @@
-import TableHead from "./components/Header/TableHead";
-import TableBody from "./components/TableBody/TableBody";
-import Controls from "./components/Controls/Controls";
-import Filters from "./components/Filters/Filters";
+import TableHead from "../../components/Header/TableHead";
+import TableBody from "../../components/TableBody/TableBody";
+import Controls from "../../components/Controls/Controls";
+import Filters from "../../components/Filters/Filters";
 import { useState, useEffect } from "react";
+
+
 function TaskPage (){
     const [tasks, setTasks] = useState([]);
       const [selectedTask, setSelectedTask] = useState(null);
