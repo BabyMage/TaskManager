@@ -1,5 +1,4 @@
-import API_URL from "./api";
-
+import { API_URL, getHeaders } from "./api";
 
 export async function login(email, password)
 {
@@ -25,7 +24,7 @@ export async function login(email, password)
 
 
 
-export async function register(username, email, password) 
+export async function registerUser(username, email, password) 
 {
     const response = await fetch(`${API_URL}/users/register`,
     {
@@ -46,4 +45,43 @@ export async function register(username, email, password)
 
     const data = await response.json();
     return data;
+}
+
+
+export async function updateUser(username, email, password)
+{
+    const headers = getHeaders()
+
+    const response = await fetch(`${API_URL}/users/me`,
+    {
+        method:"PUT",
+        headers,
+        body: JSON.stringify({
+            username,
+            email,
+            password
+        })
+    })
+    if (!response.ok)
+    {
+        const error = await response.json();
+        throw new Error(error.detail);
+    }
+
+    return await response.json();
+}
+
+
+export async function deleteUser(user_data)
+{
+    const headers = getHeaders()
+
+    const response = await fetch(`${API_URL}/users/me`,
+    {
+        method:"DELETE",
+        headers
+    })
+
+    return await response.json()
+
 }
