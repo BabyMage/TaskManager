@@ -1,4 +1,4 @@
-import { addTask, updateTask, deleteTask } from "../../Services/Controller";
+// import { addTask, updateTask, deleteTask } from "../../Services/Controller";
 import TaskForm from "../TaskForm/TaskForm";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import { useTaskForm } from "../../utils/UseTaskForms";
@@ -19,7 +19,6 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
             form.setError("A prioridade é obrigatória");
             return;
         }
-
 
         const newTask = {
             Task: form.task,
