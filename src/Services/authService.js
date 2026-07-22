@@ -72,7 +72,7 @@ export async function updateUser(username, email, password)
 }
 
 
-export async function deleteUser(user_data)
+export async function deleteUser()
 {
     const headers = getHeaders()
 
@@ -80,8 +80,41 @@ export async function deleteUser(user_data)
     {
         method:"DELETE",
         headers
-    })
+    });
+
+    if (!response.ok)
+    {
+        const error = await response.json();
+        throw new Error(error.detail);
+    }
+
 
     return await response.json()
+}
 
+
+export function logout()
+{
+    localStorage.removeItem("token");
+}
+
+
+export async function checkUser()
+{
+    const headers = getHeaders()
+
+    const response = await fetch(`${API_URL}/users/me`,
+    {
+        method:"GET",
+        headers
+    });
+
+    if (!response.ok)
+    {
+        const error = await response.json();
+        throw new Error(error.detail);
+    }
+
+    const data = await response.json();
+    return data;
 }
