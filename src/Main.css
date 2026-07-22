@@ -9,7 +9,7 @@
   --bg: #ccdaf7;
   --primary: #4f46e5;
   --primary-hover: #2c21a0;
-  --text: #1f2937;
+  --text: #070809;
   --gray: #6b7280;
   --white: #ffffff;
   --border: #e5e7eb;
@@ -21,7 +21,8 @@ body {
     background-color: var(--bg);   
     font-family: Poppins;
     margin: 0;
-    overflow-x: hidden 
+    overflow-x: hidden;
+    color: #1f2937;
 }
 
 #root{
