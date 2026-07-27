@@ -1,5 +1,7 @@
 import { API_URL, getHeaders } from "./api";
 
+
+// Função de login 👇👇
 export async function login(email, password)
 {
     const response = await fetch(`${API_URL}/users/login`,
@@ -22,8 +24,7 @@ export async function login(email, password)
     return data;
 }
 
-
-
+// Funçãp de registro de Usuario 👇👇
 export async function registerUser(username, email, password) 
 {
     const response = await fetch(`${API_URL}/users/register`,
@@ -48,6 +49,7 @@ export async function registerUser(username, email, password)
 }
 
 
+// Funcçao para atualizar usuario 👇👇
 export async function updateUser(username, email, password)
 {
     const headers = getHeaders()
@@ -71,7 +73,7 @@ export async function updateUser(username, email, password)
     return await response.json();
 }
 
-
+// Função de excluir usuario 👇👇
 export async function deleteUser()
 {
     const headers = getHeaders()
@@ -88,17 +90,16 @@ export async function deleteUser()
         throw new Error(error.detail);
     }
 
-
     return await response.json()
 }
 
-
+// Função de logout 👇👇
 export function logout()
 {
     localStorage.removeItem("token");
 }
 
-
+// Função para checar se usuario está logado 👇👇
 export async function checkUser()
 {
     const headers = getHeaders()
