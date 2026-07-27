@@ -5,8 +5,9 @@ import SignUpPage from "./Pages/SignUpPage/SignUpPage"
 
 function App() {
 
-    return (
+    
 
+    return (
         <Routes>
             <Route
                 path="/"
