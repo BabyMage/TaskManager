@@ -1,4 +1,4 @@
-function SingUpPage ()
+function SignUpPage ()
 {
     return(
         <div id="signup">

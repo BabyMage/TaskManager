@@ -1,6 +1,6 @@
 import { API_URL, getHeaders } from "./api";
 
-// ########################################################################################
+// Função de buscar tarefas 👇👇
 export async function getTasks() 
 {
     const headers = getHeaders();
@@ -19,7 +19,7 @@ export async function getTasks()
     return await response.json();
     
 }
-// ########################################################################################
+// Função pra criar tarefas 👇👇
 export async function createTask(task)
 {
     const headers = getHeaders();
@@ -39,7 +39,7 @@ export async function createTask(task)
     return await response.json();
     
 }
-// ########################################################################################
+// Função para alterar tarefas 👇👇
 export async function updateTask(id, task) 
 {
     const headers = getHeaders();
@@ -59,7 +59,7 @@ export async function updateTask(id, task)
     return await response.json();
     
 }
-// ########################################################################################
+// Função para excluir tarefas 👇👇
 export async function deleteTask(id) 
 {
     const headers = getHeaders();
@@ -76,5 +76,4 @@ export async function deleteTask(id)
     }
 
     return await response.json();
-    
 }
