@@ -1,4 +1,4 @@
-import { API_URL, getHeaders } from "./api";
+import  { API_URL, getHeaders } from "./api"
 
 
 // Função de login 👇👇

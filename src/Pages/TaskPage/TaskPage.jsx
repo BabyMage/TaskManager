@@ -1,9 +1,9 @@
-import TableHead from "../../components/Header/TableHead";
+import { loadTasks, filterTasks } from "../../utils/taskHelpers";
 import TableBody from "../../components/TableBody/TableBody";
+import TableHead from "../../components/TableHead/TableHead";
 import Controls from "../../components/Controls/Controls";
 import Filters from "../../components/Filters/Filters";
 import { useState, useEffect } from "react";
-import { loadTasks, filterTasks } from "./taskUtils";
 
 
 function TaskPage (){
@@ -21,11 +21,9 @@ function TaskPage (){
       setTasks(data);
     }
     
-    
     useEffect(() => {
-      fetchTasks;
+      fetchTasks();
     },[]);
-    
     
     const filteredTasks = filterTasks(
       tasks,
@@ -37,9 +35,8 @@ function TaskPage (){
     
     return(
     <>
-      <h1>Gerenciador de Tarefas</h1>
       <Controls 
-        reloadTasks={loadTasks}
+        reloadTasks={fetchTasks}
         selectedTask={selectedTask}
         setSelectedTask={setSelectedTask}  />
       

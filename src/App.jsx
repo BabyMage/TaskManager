@@ -1,11 +1,24 @@
-import { Routes, Route } from "react-router-dom";
-import LoginPage from "./Pages/LoginPage/LoginPage";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import * as authservice from "./Services/authService"
+import { validateUser } from "./utils/taskHelpers"
+import { useEffect } from "react";
+
 import TaskPage from "./Pages/TaskPage/TaskPage";
+import LoginPage from "./Pages/LoginPage/LoginPage";
 import SignUpPage from "./Pages/SignUpPage/SignUpPage"
 
 function App() {
 
-    
+    const navigate = useNavigate();
+
+    useEffect(() => 
+    {
+        validateUser(
+            navigate,
+            authservice.checkUser,
+            authservice.logout
+        )
+    }, [])
 
     return (
         <Routes>
@@ -22,7 +35,6 @@ function App() {
                 element={<SignUpPage />}
             />
         </Routes>
-
     )
 }
 

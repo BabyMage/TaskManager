@@ -8,6 +8,8 @@ function LoginPage ()
             <input type="email" name="email" placeholder="email"/>
             <p>senha</p>
             <input type="text" name="senha" placeholder="senha"/>
+            <br />
+            <br />
             <button>Login</button>
             <button>Criar conta</button>
         </div>
