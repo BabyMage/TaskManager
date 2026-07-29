@@ -1,7 +1,7 @@
-const API_URL = "http://127.0.0.1.8000";
+export const API_URL = "http://127.0.0.1.8000";
 
 
-export async function getHeaders()
+export function getHeaders()
 {
     const token = localStorage.getItem("token")
     
@@ -10,4 +10,4 @@ export async function getHeaders()
         "Authorization": `Bearer ${token}`
     }
 }
-export default API_URL;
+

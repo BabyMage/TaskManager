@@ -1,3 +1,4 @@
-button{
-    background-color: blue;
+#root{
+    max-width: 40vw;
+    margin-top: 25vh;
 }
