@@ -2,6 +2,7 @@
 import TaskForm from "../TaskForm/TaskForm";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import { useTaskForm } from "../../utils/UseTaskForms";
+import { createTask, getTasks, updateTask, deleteTask } from "../../Services/taskService"
 
 function Controls({ reloadTasks, selectedTask, setSelectedTask })
 {
@@ -28,7 +29,7 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
             Done: form.done
         };
 
-        await addTask(newTask);
+        await createTask(newTask);
         reloadTasks();
         setSelectedTask(null);
         form.resetForm();
