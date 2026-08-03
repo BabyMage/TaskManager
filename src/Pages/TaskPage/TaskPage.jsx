@@ -4,7 +4,8 @@ import TableHead from "../../components/TableHead/TableHead";
 import Controls from "../../components/Controls/Controls";
 import Filters from "../../components/Filters/Filters";
 import { useState, useEffect } from "react";
-
+import "./TaskPage.css"
+''
 
 function TaskPage (){
     const [tasks, setTasks] = useState([]);
