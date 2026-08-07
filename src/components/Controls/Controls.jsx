@@ -1,13 +1,13 @@
-// import { addTask, updateTask, deleteTask } from "../../Services/Controller";
 import TaskForm from "../TaskForm/TaskForm";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import { useTaskForm } from "../../utils/UseTaskForms";
-import { createTask, getTasks, updateTask, deleteTask } from "../../Services/taskService"
+import { createTask, updateTask, deleteTask } from "../../Services/taskService";
 
 function Controls({ reloadTasks, selectedTask, setSelectedTask })
 {
     const form = useTaskForm(selectedTask);
 
+    // 
     async function handleAdd()
     {
         if (!form.task.trim())
@@ -22,11 +22,11 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
         }
 
         const newTask = {
-            Task: form.task,
-            Date: form.date,
-            Category: form.category,
-            Priority: form.priority,
-            Done: form.done
+            task: form.task,
+            date: form.date,
+            category: form.category,
+            priority: form.priority,
+            done: form.done
         };
 
         await createTask(newTask);
@@ -40,11 +40,11 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
         if (!selectedTask) return;
         
         const updatedTask = {
-            Task: form.task,
-            Date: form.date,
-            Category: form.category,
-            Priority: form.priority,
-            Done: form.done
+            task: form.task,
+            date: form.date,
+            category: form.category,
+            priority: form.priority,
+            done: form.done
         };
         
         await updateTask(selectedTask.id, updatedTask);

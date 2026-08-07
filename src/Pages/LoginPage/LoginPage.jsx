@@ -25,7 +25,7 @@ function LoginPage()
     }
 
     return(
-        <div>
+        <div id="login">
             <p>email</p>
             <input
                 type="email"
