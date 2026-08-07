@@ -14,33 +14,33 @@ function TableBody({ tasks, setSelectedTask })
                     style={{cursor: "pointer"}}
                 >
                         
-                    <td>{task.Task}</td>
-                    <td>{task.Date}</td>
+                    <td>{task.task}</td>
+                    <td>{task.date}</td>
                     
                     <td>
-                        <span className={`tag ${task.Category}`}>
-                            {task.Category}
+                        <span className={`tag ${task.category}`}>
+                            {task.category}
                         </span>
                     </td>
                     
                     <td>
-                        <span className={`priority ${task.Priority}`}>
-                            {task.Priority}
+                        <span className={`priority ${task.priority}`}>
+                            {task.priority}
                         </span>
                     </td>
                     
-                    <td style={{ color: task.Done ? "green" : "red" }}>
-                        {task.Done ? "✅Concluído" : "⏳Pendente"}
+                    <td style={{ color: task.done ? "green" : "red" }}>
+                        {task.done ? "✅Concluído" : "⏳Pendente"}
                     </td>
 
                     <td>
                         <span
                         style={{
                             fontSize: "12px",
-                            background: getTaskStatus(task.Date).color}}
+                            background: getTaskStatus(task.date).color}}
         
                         className={`date-status ${status.color}`}>
-                            {getTaskStatus(task.Date).label}
+                            {getTaskStatus(task.date).label}
                         </span>
                     </td>
                 </tr>
