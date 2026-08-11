@@ -46,7 +46,6 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
             priority: form.priority,
             done: form.done
         };
-        
         await updateTask(selectedTask.id, updatedTask);
         reloadTasks();
         setSelectedTask(null);

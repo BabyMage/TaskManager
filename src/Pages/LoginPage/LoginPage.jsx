@@ -24,6 +24,11 @@ function LoginPage()
         }
     }
 
+    async function goToRegister()
+    {
+        navigate("/register")
+    }
+
     return(
         <div id="login">
             <p>email</p>
@@ -44,7 +49,7 @@ function LoginPage()
             <button onClick={handleLogin}>
                 Login
             </button>
-            <button>
+            <button onClick={goToRegister}>
                 Cadastro
             </button>
             <p>{error}</p>

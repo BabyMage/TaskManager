@@ -1,4 +1,4 @@
-import  { API_URL, getHeaders } from "./api"
+import { API_URL, getHeaders } from "./api"
 
 
 // Função de login 👇👇
@@ -25,17 +25,13 @@ export async function login(email, password)
 }
 
 // Funçãp de registro de Usuario 👇👇
-export async function registerUser(username, email, password) 
+export async function registerUser(user) 
 {
     const response = await fetch(`${API_URL}/users/register`,
     {
         method:"POST",
         headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({
-            username,
-            email,
-            password
-        })
+        body: JSON.stringify(user)
     })
 
     if (!response.ok)
@@ -97,6 +93,7 @@ export async function deleteUser()
 export function logout()
 {
     localStorage.removeItem("token");
+
 }
 
 // Função para checar se usuario está logado 👇👇
