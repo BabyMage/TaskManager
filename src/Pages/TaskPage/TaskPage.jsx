@@ -3,12 +3,13 @@ import TableBody from "../../components/TableBody/TableBody";
 import TableHead from "../../components/TableHead/TableHead";
 import Controls from "../../components/Controls/Controls";
 import Filters from "../../components/Filters/Filters";
-import { logout } from "../../Services/authService";
+import { logout, checkUser } from "../../Services/authService";
 import { useState, useEffect } from "react";
 import "./TaskPage.css"
 
 
 function TaskPage (){
+    const [username, setUsername] = useState("")
     const [tasks, setTasks] = useState([]);
     const [selectedTask, setSelectedTask] = useState(null);
 
@@ -24,6 +25,13 @@ function TaskPage (){
     }
     
     useEffect(() => {
+
+      async function loadUser()
+      {
+          const user = await checkUser();
+          setUsername(user.username);
+      }
+      loadUser();
       fetchTasks();
     },[]);
     
@@ -37,12 +45,13 @@ function TaskPage (){
     
     return(
     <>
+      <h1>Bem-Vindo, {username} !</h1>
       <Controls 
         reloadTasks={fetchTasks}
         selectedTask={selectedTask}
         setSelectedTask={setSelectedTask}  />
       
-      {/* <button onClick={logout()}>Logout</button> */}
+      {/* <button onClick={()=> logout()}>Logout</button> */}
       <Filters
         search={search}
         setSearch={setSearch}

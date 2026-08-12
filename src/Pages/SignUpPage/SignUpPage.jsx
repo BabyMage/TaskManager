@@ -6,7 +6,7 @@ function SignUpPage ()
 {
     const navigate = useNavigate()
     const [username, setUsername] = useState("")
-    const [email, setemail] = useState("")
+    const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
 
 
