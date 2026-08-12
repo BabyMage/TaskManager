@@ -28,7 +28,7 @@ function App() {
             />
             <Route
                 path="/tasks"
-                element={<TaskPage />}
+                element={<TaskPage username={authservice.checkUser().username} />}
             />
             <Route
                 path="/register"
