@@ -93,7 +93,6 @@ export async function deleteUser()
 export function logout()
 {
     localStorage.removeItem("token");
-
 }
 
 // Função para checar se usuario está logado 👇👇

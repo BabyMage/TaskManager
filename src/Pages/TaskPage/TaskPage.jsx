@@ -5,14 +5,17 @@ import Controls from "../../components/Controls/Controls";
 import Filters from "../../components/Filters/Filters";
 import { logout, checkUser } from "../../Services/authService";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./TaskPage.css"
 
 
+
+
 function TaskPage (){
+    const navigate = useNavigate() 
     const [username, setUsername] = useState("")
     const [tasks, setTasks] = useState([]);
     const [selectedTask, setSelectedTask] = useState(null);
-
     const [search, setSearch] = useState("");
     const [filterCategory, setFilterCategory] = useState("");
     const [filterPriority, setFilterPriority] = useState("");
@@ -25,7 +28,6 @@ function TaskPage (){
     }
     
     useEffect(() => {
-
       async function loadUser()
       {
           const user = await checkUser();
@@ -42,6 +44,18 @@ function TaskPage (){
       filterPriority,
       filterDone
     )
+
+    function handleLogout()
+    {
+        const confirmLogout = window.confirm(
+            "Deseja realmente sair?"
+        );
+
+        if (!confirmLogout) return;
+
+        logout();
+        navigate("/");
+    }
     
     return(
     <>
@@ -51,7 +65,7 @@ function TaskPage (){
         selectedTask={selectedTask}
         setSelectedTask={setSelectedTask}  />
       
-      {/* <button onClick={()=> logout()}>Logout</button> */}
+      <button onClick={handleLogout}>Logout</button>
       <Filters
         search={search}
         setSearch={setSearch}
