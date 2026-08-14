@@ -3,17 +3,17 @@ import TableBody from "../../components/TableBody/TableBody";
 import TableHead from "../../components/TableHead/TableHead";
 import Controls from "../../components/Controls/Controls";
 import Filters from "../../components/Filters/Filters";
+import SideBar from "../../components/SideBar/SideBar";
 import { logout, checkUser } from "../../Services/authService";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./TaskPage.css"
 
-
-
-
 function TaskPage (){
     const navigate = useNavigate() 
-    const [username, setUsername] = useState("")
+
+    const [isSidebarOpen, setIsSideBarOpen] = useState(false);
+    const [user, setUser] = useState(null)
     const [tasks, setTasks] = useState([]);
     const [selectedTask, setSelectedTask] = useState(null);
     const [search, setSearch] = useState("");
@@ -26,12 +26,21 @@ function TaskPage (){
       const data = await loadTasks();
       setTasks(data);
     }
+
+    function openSideBar()
+    {
+      setIsSideBarOpen(true);
+    }
+    function closeSidebar()
+    {
+      setIsSideBarOpen(false);
+    }
     
     useEffect(() => {
       async function loadUser()
       {
-          const user = await checkUser();
-          setUsername(user.username);
+          const data = await checkUser();
+          setUser(data);
       }
       loadUser();
       fetchTasks();
@@ -59,7 +68,14 @@ function TaskPage (){
     
     return(
     <>
-      <h1>Bem-Vindo, {username} !</h1>
+      <button onClick={openSideBar}>☰</button>
+      <h1>Bem-Vindo, {user?.username}!</h1>
+
+      <SideBar
+        isOpen={isSidebarOpen}
+        onClose={closeSidebar}
+        user={user}
+      />
       <Controls 
         reloadTasks={fetchTasks}
         selectedTask={selectedTask}
