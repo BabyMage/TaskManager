@@ -1,0 +1,10 @@
+.sidebar {
+    position: fixed;
+    left: -350px;
+    transition: 0.3s;
+}
+
+.sidebar.open{
+    left: 0
+}
+

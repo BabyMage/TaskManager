@@ -19,33 +19,32 @@ function SignUpPage ()
         }
 
         registerUser(user)
-        navigate("/")
-        
+        navigate("/")   
     }
 
     return(
         <div id="signup">
-            <p>UserName</p>
+            <p>Nome de Usuario</p>
             <input 
                 type="text"
                 name="username" 
-                placeholder="nome de usuario"
                 onChange={(e) => setUsername(e.target.value)}/>
             <p>Email</p>
             <input 
                 type="email" 
                 name="email" 
-                placeholder="email"
                 onChange={(e) => setEmail(e.target.value)}/>
-            <p>senha</p>
+            <p>Senha</p>
             <input 
                 type="text" 
                 name="senha" 
-                placeholder="senha"
                 onChange={(e) => setSenha(e.target.value)}/>
             
             <button onClick={handleRegister}>
                 Criar Conta
+            </button>
+            <button onClick={() => navigate("/")}>
+                Cancelar
             </button>
         </div>
     )
