@@ -1,9 +1,9 @@
-import { loadTasks, filterTasks } from "../../utils/taskHelpers";
 import TableBody from "../../components/TableBody/TableBody";
 import TableHead from "../../components/TableHead/TableHead";
 import Controls from "../../components/Controls/Controls";
 import Filters from "../../components/Filters/Filters";
 import SideBar from "../../components/SideBar/SideBar";
+import { loadTasks, filterTasks } from "../../utils/taskHelpers";
 import { logout, checkUser } from "../../Services/authService";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";

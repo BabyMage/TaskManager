@@ -1,7 +1,10 @@
 .sidebar {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     left: -350px;
     transition: 0.3s;
+    background-color: white;
 }
 
 .sidebar.open{

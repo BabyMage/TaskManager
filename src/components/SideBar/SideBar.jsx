@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { updateUser, deleteUser } from "../../Services/authService"
 import "./SideBar.css"
 
 function SideBar({ user, isOpen, onClose })
 {
+
+    const navigate = useNavigate()
     const [editing, setEditing] = useState(false);
 
     const [username, setUsername] = useState(
@@ -17,26 +21,52 @@ function SideBar({ user, isOpen, onClose })
 
     async function handleUpdate()
     {
+        const updatedUsername = username || user.username;
+        const updatedEmail = email || user.email;
+
         await updateUser(
-            username,
-            email,
+            updatedUsername,
+            updatedEmail,
             password
         );
 
-        alert("Dados atualizados!");
+        alert("Dados atualizados com sucesso! Por favor recarregue a pagina");
+        setEditing(false);
+    }
+
+    function startEditing()
+    {
+        setUsername(user.username);
+        setEmail(user.email);
+        setPassword("");
+        setEditing(true);
+    }
+
+    function handleDelete()
+    {
+        const confirmDelete = window.confirm("Deseja excluir sua conta?")
+        if(!confirmDelete) return;
+
+        const sureDelete = window.confirm("Esta ação é permanente. Tem certeza?")
+        if(!sureDelete) return;
+
+        deleteUser(user.id)
+        localStorage.removeItem("token")
+        navigate("/")
     }
 
     return (
         <div className={`sidebar ${isOpen ? "open" : ""}`}>
-            <h2>Meu Perfil</h2>
 
             {editing ? (
                 <>
+                    <h2>Editar Perfil</h2>
                     <input
                         value={username}
                         onChange={(e) =>
                             setUsername(e.target.value)
                         }
+                        placeholder="nome de usuario"
                     />
 
                     <input
@@ -44,6 +74,7 @@ function SideBar({ user, isOpen, onClose })
                         onChange={(e) =>
                             setEmail(e.target.value)
                         }
+                        placeholder="email"
                     />
 
                     <input
@@ -52,6 +83,7 @@ function SideBar({ user, isOpen, onClose })
                         onChange={(e) =>
                             setPassword(e.target.value)
                         }
+                        placeholder="senha"
                     />
 
                     <button onClick={handleUpdate}>
@@ -66,16 +98,19 @@ function SideBar({ user, isOpen, onClose })
                 </>
             ) : (
                 <>
+                    <h2>Meu Perfil</h2>
                     <p>Nome: {user?.username}</p>
                     <p>Email: {user?.email}</p>
 
                     <button
-                        onClick={() => setEditing(true)}
+                        onClick={() => startEditing()}
                     >
                         Editar Perfil
                     </button>
                 </>
             )}
+
+            <button onClick={() => handleDelete()}>Excuir Conta</button>
 
             <button onClick={onClose}>
                 X
@@ -84,4 +119,4 @@ function SideBar({ user, isOpen, onClose })
     );
 }
 
-export default SideBar
+export default SideBar;
