@@ -7,7 +7,7 @@ import { loadTasks, filterTasks } from "../../utils/taskHelpers";
 import { logout, checkUser } from "../../Services/authService";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./TaskPage.css"
+
 
 function TaskPage (){
     const navigate = useNavigate() 
@@ -68,7 +68,7 @@ function TaskPage (){
     
     return(
     <>
-      <button onClick={openSideBar}>☰</button>
+      <button className="btn" onClick={openSideBar}>☰</button>
       <h1>Bem-Vindo, {user?.username}!</h1>
 
       <SideBar

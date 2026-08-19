@@ -1,4 +1,3 @@
-  import "./Filters.css";
 
   function Filters({
     search,

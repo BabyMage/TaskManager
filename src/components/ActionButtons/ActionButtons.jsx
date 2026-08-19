@@ -1,11 +1,10 @@
-import "./ActionButtons.css"
 
 function ActionButtons({ onAdd, onUpdate, onDelete }) {
   return (
     <div id="controls">
-      <button onClick={onAdd}>Adicionar</button>
-      <button onClick={onUpdate}>Atualizar</button>
-      <button onClick={onDelete}>Excluir</button>
+      <button className="btn" onClick={onAdd}>Adicionar</button>
+      <button className="btn" onClick={onUpdate}>Alterar</button>
+      <button className="btn" onClick={onDelete}>Excluir</button>
     </div>
   );
 }

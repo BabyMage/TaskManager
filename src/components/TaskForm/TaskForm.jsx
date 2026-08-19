@@ -1,5 +1,3 @@
-import "./TaskForm.css"
-
 function TaskForm({
   task,
   setTask,

@@ -1,5 +1,5 @@
 // Corpo da tabela de tarefas
-import "./TableBody.css"
+
 
 import { getTaskStatus } from "../../utils/DateManager"
 

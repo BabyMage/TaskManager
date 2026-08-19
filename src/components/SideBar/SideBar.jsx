@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateUser, deleteUser } from "../../Services/authService"
-import "./SideBar.css"
 
 function SideBar({ user, isOpen, onClose })
 {
@@ -42,7 +41,7 @@ function SideBar({ user, isOpen, onClose })
         setEditing(true);
     }
 
-    function handleDelete()
+    async function handleDelete()
     {
         const confirmDelete = window.confirm("Deseja excluir sua conta?")
         if(!confirmDelete) return;
@@ -50,7 +49,7 @@ function SideBar({ user, isOpen, onClose })
         const sureDelete = window.confirm("Esta ação é permanente. Tem certeza?")
         if(!sureDelete) return;
 
-        deleteUser(user.id)
+        await deleteUser(user.id)
         localStorage.removeItem("token")
         navigate("/")
     }
@@ -86,11 +85,12 @@ function SideBar({ user, isOpen, onClose })
                         placeholder="senha"
                     />
 
-                    <button onClick={handleUpdate}>
+                    <button className="btn" onClick={handleUpdate}>
                         Salvar
                     </button>
 
                     <button
+                        className="btn"
                         onClick={() => setEditing(false)}
                     >
                         Cancelar
@@ -103,6 +103,7 @@ function SideBar({ user, isOpen, onClose })
                     <p>Email: {user?.email}</p>
 
                     <button
+                        className="btn"
                         onClick={() => startEditing()}
                     >
                         Editar Perfil
@@ -110,9 +111,9 @@ function SideBar({ user, isOpen, onClose })
                 </>
             )}
 
-            <button onClick={() => handleDelete()}>Excuir Conta</button>
+            <button className="btn" onClick={() => handleDelete()}>Excuir Conta</button>
 
-            <button onClick={onClose}>
+            <button className="btn" onClick={onClose}>
                 X
             </button>
         </div>
