@@ -1,4 +1,3 @@
-import "./LoginPage.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../Services/authService";
@@ -47,10 +46,10 @@ function LoginPage()
                 onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button onClick={handleLogin}>
+            <button className="btn" onClick={handleLogin}>
                 Login
             </button>
-            <button onClick={goToRegister}>
+            <button className="btn" onClick={goToRegister}>
                 Cadastro
             </button>
             <p>{error}</p>
