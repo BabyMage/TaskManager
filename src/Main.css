@@ -1,7 +1,8 @@
 /* =========================================================
 ATENÇÃO: Por razoês tecnicas, foi decidido que toda o CSS e
-a programação visual do sistema será desenvolcida inteiramente neste arquivo. 
+a programação visual do sistema será desenvolida inteiramente neste arquivo. 
 Favor conferir o indice abaixo:
+    
     1 - Variaveis / Design system
         1-a. Tipografia
         1-b. Cores
@@ -10,54 +11,74 @@ Favor conferir o indice abaixo:
         1-e. Animações
     
     2 - Rest / Estilos gerais
-        2-a
+
+    3 - Layout Principal
+        3-a. conteudo da tabela de tarefas
+        3-b. Outros estilos
+    
+    4 - Botões
+        4-a. Classes
+        4-b. IDs
+    
+    5 - Task Form
+
+    6 - Filtros
+
+    7 - Tabela de Tarefas
+
+    8 - Sidebar / Perfil
+
+    9 - Login / Registro
+
+    10 - Responsividade
+
    ========================================================= */
 
-@font-face{
-    font-family: 'Poppins';
-    src: url('./assets/Poppins-Light.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+
 /* =========================================================
    1. VARIÁVEIS / DESIGN SYSTEM
    ========================================================= */
+    @font-face{
+        font-family: 'Poppins';
+        src: url('./assets/Poppins-Light.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    :root {
+        /* Tipografia */
+        
+        --font-primary: "Poppins", sans-serif;
 
-:root {
-    /* Tipografia */
-    --font-primary: "Poppins", sans-serif;
+        /* Cores */
+        --color-primary: #4f46e5;
+        --color-primary-hover: #4338ca;
 
-    /* Cores */
-    --color-primary: #4f46e5;
-    --color-primary-hover: #4338ca;
+        --color-background: #f5f7fb;
+        --color-surface: #ffffff;
 
-    --color-background: #f5f7fb;
-    --color-surface: #ffffff;
+        --color-sidebar: #111827;
+        --color-sidebar-hover: #1f2937;
 
-    --color-sidebar: #111827;
-    --color-sidebar-hover: #1f2937;
+        --color-text: #1f2937;
+        --color-text-muted: #6b7280;
 
-    --color-text: #1f2937;
-    --color-text-muted: #6b7280;
+        --color-border: #e5e7eb;
 
-    --color-border: #e5e7eb;
+        --color-success: #10b981;
+        --color-danger: #ef4444;
+        --color-warning: #f59e0b;
 
-    --color-success: #10b981;
-    --color-danger: #ef4444;
-    --color-warning: #f59e0b;
+        /* Bordas */
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 16px;
 
-    /* Bordas */
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
+        /* Sombras */
+        --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.06);
 
-    /* Sombras */
-    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.06);
-
-    /* Animações */
-    --transition: 0.2s ease;
-    --scale: 1.2
-}
+        /* Animações */
+        --transition: 0.2s ease;
+    }
 
 /* =========================================================
    2. RESET / ESTILOS GERAIS
@@ -90,6 +111,18 @@ Favor conferir o indice abaixo:
 /* =========================================================
    3. LAYOUT PRINCIPAL
    ========================================================= */
+
+    /* Outros estilos */
+    .task-header h1 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .task-header p {
+        margin-top: 4px;
+        color: var(--color-text-muted);
+        font-size: 13px;
+    }
     .app-layout{
         display: flex;
         min-height: 100vh
@@ -129,31 +162,7 @@ Favor conferir o indice abaixo:
 
         cursor: pointer;
     }
-    /* Conteudo da tabela de tarefas 👇 */
-    .task-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 32px;
-    }
-
-    .task-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        margin-bottom: 24px;
-    }
-
-    .task-header h1 {
-        font-size: 24px;
-        font-weight: 700;
-    }
-
-    .task-header p {
-        margin-top: 4px;
-        color: var(--color-text-muted);
-        font-size: 13px;
-    }
+    
 
 
 /* =========================================================
@@ -161,27 +170,49 @@ Favor conferir o indice abaixo:
    ========================================================= */
     /* Classes 👇 */
    .btn {
-        color: var(--color-border);
-        background-color: var(--color-primary);
-        border: none;
-        border-radius: var(--radius-md);
-        padding: 10px 18px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: 
-            background-color var(--transition),
-            transform var(--transition);
-        }
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 10px 18px;
+
+    cursor: pointer;
+    font-size: 14px;
+
+    transition:
+        background-color var(--transition),
+        transform var(--transition);
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
 
     .btn-primary {
         background: var(--color-primary);
         color: white;
     }
 
-    .btn:hover {
+    .btn-primary:hover {
         background: var(--color-primary-hover);
-        transition: var(--transition);
-        transform: translateY(-1px);
+    }
+
+    .btn-danger {
+        background: #fff1f2;
+        color: var(--color-danger);
+    }
+
+    .btn-danger:hover {
+        background: #ffe4e6;
+    }
+
+    .btn-secondary {
+        background: var(--color-surface);
+        color: var(--color-text);
+
+        border: 1px solid var(--color-border);
+    }
+
+    .btn-secondary:hover {
+        background: #f9fafb;
     }
 
     /* IDs 👇 */
@@ -216,12 +247,32 @@ Favor conferir o indice abaixo:
 /* =========================================================
    7. TABELA DE TAREFAS
    ========================================================= */
+    .task-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px;
+    }
 
+    .task-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 24px;
+    }
 
 /* =========================================================
    8. SIDEBAR / PERFIL
    ========================================================= */
+    .sidebar {
+        width: 220px;
+        min-height: 100vh;
 
+        background: var(--color-sidebar);
+        color: white;
+
+        padding: 20px 14px;
+}
 
 /* =========================================================
    9. LOGIN / REGISTRO
