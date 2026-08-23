@@ -10,7 +10,7 @@
     setFilterDone
   }) {
     return (
-      <div className="filter">
+      <div className="filters-bar">
 
         <input
           type="text"
