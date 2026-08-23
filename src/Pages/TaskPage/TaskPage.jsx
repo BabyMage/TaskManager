@@ -100,12 +100,12 @@ function TaskPage (){
                         ✓ Task Manager
                     </div>
 
-                    <button
+                    {/* <button
                         className="menu-button"
                         onClick={openSideBar}
                     >
                         ☰
-                    </button>
+                    </button> */}
 
                 </header>
 

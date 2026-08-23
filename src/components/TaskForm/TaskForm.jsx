@@ -15,13 +15,15 @@ function TaskForm({
     <div id="adicionarTarefa">
 
       <input
+        
         type="text"
         placeholder="Descrição da Tarefa"
         value={task}
         onChange={(e) => setTask(e.target.value)}
       />
-      <p>Data</p>
+  
       <input
+        placeholder="data"
         type="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}

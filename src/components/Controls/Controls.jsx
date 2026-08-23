@@ -63,7 +63,11 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
     };
 
     return(
-        <>
+        <section className="task-form">
+            <p>
+                📅 Controle de tarefas
+            </p>
+
             <ActionButtons
                 onAdd={handleAdd}
                 onUpdate={handleUpdate}
@@ -71,7 +75,7 @@ function Controls({ reloadTasks, selectedTask, setSelectedTask })
             />
 
             <TaskForm {...form}/>
-        </>
+        </section>
     );
 };
 
