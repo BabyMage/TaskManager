@@ -114,7 +114,7 @@ function SideBar({ user, isOpen, onClose })
             <button className="btn" onClick={() => handleDelete()}>Excuir Conta</button>
 
             <button className="btn" onClick={onClose}>
-                X
+                Logout
             </button>
         </div>
     );
