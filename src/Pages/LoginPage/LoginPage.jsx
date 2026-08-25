@@ -30,7 +30,7 @@ function LoginPage()
 
     return(
         <div id="login">
-            <h1>Garenciador de Tarefas</h1>
+            <h1>Gerenciador de Tarefas</h1>
             <p>email</p>
             <input
                 type="email"

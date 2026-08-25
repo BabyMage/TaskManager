@@ -90,6 +90,8 @@ Favor conferir o indice abaixo:
         margin: 0;
         padding: 0;
     }
+
+
     
     html, 
     body,
@@ -107,8 +109,12 @@ Favor conferir o indice abaixo:
     input,
     select{
         font-family: inherit;
+        border-radius: 7px;
+        border-color: black;
+        border-width: 0.2px;
     }
 
+    
 /* =========================================================
    3. LAYOUT PRINCIPAL
    ========================================================= */
@@ -133,6 +139,7 @@ Favor conferir o indice abaixo:
         flex: 1;
         min-width: 0;
         background: var(--color-background);
+        
     }
 
     .topbar{
@@ -184,7 +191,7 @@ Favor conferir o indice abaixo:
         }
 
     .btn:hover {
-        transform: translateY(-1px);
+        transform: translateY(-3px);
         background-color: var(--color-hover);
     }
 
@@ -232,6 +239,10 @@ Favor conferir o indice abaixo:
         padding: 20px;
 
         box-shadow: var(--shadow-card);
+
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
     }
 
     .task-form-title {
@@ -243,13 +254,22 @@ Favor conferir o indice abaixo:
     #adicionarTarefa{
         display: flex;
         flex-direction: row;
+        gap: 10px;
    
+    }
+
+    .task-actions
+    {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
     }
 /* =========================================================
    6. FILTROS
    ========================================================= */
 
     .filters-bar {
+        padding: 16px;
         display: flex;
         align-items: center;
         justify-content: space-between;
