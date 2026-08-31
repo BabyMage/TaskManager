@@ -29,30 +29,38 @@ function LoginPage()
     }
 
     return(
-        <div id="login">
-            <h1>Gerenciador de Tarefas</h1>
-            <p>email</p>
-            <input
-                type="email"
-                value={email}
-                placeholder="email"
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <p>senha</p>
-            <input
-                placeholder="senha"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+        <div className="auth-page">
+            <div className="login-screen">
+            <h1 className="login-title">Gerenciador de Tarefas</h1>
+            <div className="email-field">
+                <p>Email</p>
+                <input
+                    type="email"
+                    value={email}
+                    placeholder="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    />
+            </div>
+            <div className="passowrd-field"> 
+                <p>Senha</p>
+                <input
+                    placeholder="senha"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    />
+            </div>
 
-            <button className="btn" onClick={handleLogin}>
-                Login
-            </button>
-            <button className="btn" onClick={goToRegister}>
-                Cadastro
-            </button>
-            <p>{error}</p>
+            <div className="menu-buttons">
+                <button className="btn" onClick={handleLogin}>
+                    Login
+                </button>
+                <button className="btn" onClick={goToRegister}>
+                    Cadastro
+                </button>
+                <p>{error}</p>
+            </div>
+            </div>
         </div>
     );
 }

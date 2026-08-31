@@ -23,29 +23,44 @@ function SignUpPage ()
     }
 
     return(
-        <div id="signup">
-            <p>Nome de Usuario</p>
-            <input 
-                type="text"
-                name="username" 
-                onChange={(e) => setUsername(e.target.value)}/>
+        <div className="auth-page">
+            <div className="register-screen">
+            <h1>Criar Conta</h1>
+            
+            <div className="username-field">
+                <p>Nome de Usuario</p>
+                <input 
+                    type="text"
+                    name="username" 
+                    onChange={(e) => setUsername(e.target.value)}/>
+            </div>
+            <div className="email-field">
             <p>Email</p>
             <input 
                 type="email" 
                 name="email" 
                 onChange={(e) => setEmail(e.target.value)}/>
-            <p>Senha</p>
-            <input 
-                type="text" 
-                name="senha" 
-                onChange={(e) => setSenha(e.target.value)}/>
-            
-            <button onClick={handleRegister}>
-                Criar Conta
-            </button>
-            <button onClick={() => navigate("/")}>
-                Cancelar
-            </button>
+            </div>
+            <div className="password-field">
+                <p>Senha</p>
+                <input 
+                    type="text" 
+                    name="senha" 
+                    onChange={(e) => setSenha(e.target.value)}/>
+            </div>
+            <div className="menu-buttons">
+                <button
+                    className="btn" 
+                    onClick={handleRegister}>
+                    Criar Conta
+                </button>
+                <button 
+                    onClick={() => navigate("/")}
+                    className="btn">
+                    Cancelar
+                </button>
+            </div>
+        </div>
         </div>
     )
 }

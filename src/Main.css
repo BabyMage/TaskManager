@@ -337,7 +337,7 @@ Favor conferir o indice abaixo:
 
         color: var(--color-text-muted);
 
-        border-bottom: 1px solid var(--color-border);
+        border-bottom: 1px light var(--color-border);
     }
 
 
@@ -361,6 +361,7 @@ Favor conferir o indice abaixo:
 
         border-bottom: 1px solid var(--color-text);
 
+        
         vertical-align: middle;
     }
 
@@ -421,7 +422,7 @@ Favor conferir o indice abaixo:
 
             padding: 4px 10px;
 
-            border-radius: 10px;
+            border-radius: 16px;
 
             font-size: 12px;
             font-weight: 600;
@@ -469,6 +470,40 @@ Favor conferir o indice abaixo:
    9. LOGIN / REGISTRO
    ========================================================= */
 
+    .auth-page{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+   }
+
+   .login-screen, .register-screen{
+        background-color: var(--color-surface);
+        box-shadow: var(--shadow-card);
+        border-radius: 15px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+        
+
+        padding: 20px;
+    }
+
+   .login-title{
+    font-size: 50px;
+   }
+
+   .menu-buttons{
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+   }
 
 /* =========================================================
    10. RESPONSIVIDADE
