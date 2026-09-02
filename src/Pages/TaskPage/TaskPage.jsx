@@ -95,17 +95,33 @@ function TaskPage (){
                 {/* ---------- TOPBAR ---------- */}
 
                 <header className="topbar">
+                    {isSidebarOpen ? (
+                        <>
+                        <button
+                            id="menu-button"
+                            className="btn"
+                            onClick={openSideBar}
+                        >
+                            ☰
+                        </button>
+                        </>
+                    ): (
+                       <>
+                        <button
+                            id="menu-button"
+                            className="btn"
+                            onClick={closeSidebar}
+                        >
+                            X
+                        </button>
+                        </> 
+                    )}
 
                     <div className="logo">
                         ✓ Task Manager
                     </div>
 
-                    {/* <button
-                        className="menu-button"
-                        onClick={openSideBar}
-                    >
-                        ☰
-                    </button> */}
+                    
 
                 </header>
 
