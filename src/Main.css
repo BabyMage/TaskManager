@@ -138,7 +138,7 @@ Favor conferir o indice abaixo:
 
     .main-content{
         flex: 1;
-        min-width: 0;
+        /* min-width: 100vw; */
         background: var(--color-background);
         
     }
@@ -227,11 +227,10 @@ Favor conferir o indice abaixo:
     }
 
     /* IDs 👇 */
-    /* #menu-button{
+     #menu-button{
         display: none;
-
     }
-     */
+    
 
 /* =========================================================
    5. TASK FORM
@@ -458,7 +457,7 @@ Favor conferir o indice abaixo:
 /* =========================================================
    8. SIDEBAR / PERFIL
    ========================================================= */
-    .sidebar {
+    .sidebar.open, .sidebar.closed {
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -502,7 +501,7 @@ Favor conferir o indice abaixo:
     }
 
    .login-title{
-    font-size: 50px;
+        font-size: 50px;
    }
 
    .menu-buttons{
@@ -517,4 +516,46 @@ Favor conferir o indice abaixo:
 
    @media (max-width: 768px){
 
+        #menu-button{
+            display: block;
+        }
+
+        .sidebar.open{
+            transform: translateX(0);
+        }
+
+        .sidebar.closed{
+            transform: translateX(-100%);
+        }
+
+        .sidebar.closed, .sidebar.open{
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .main-content{
+            width: 100%;
+        }
+
+        #adicionarTarefa{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .filters-section{
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        }
+
+        .filters-bar{
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        }
    }

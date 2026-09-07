@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateUser, deleteUser } from "../../Services/authService"
 
-function SideBar({ user, isOpen, onClose })
+function SideBar({ user, isOpen, onClose, setClose })
 {
 
     const navigate = useNavigate()
@@ -55,7 +55,7 @@ function SideBar({ user, isOpen, onClose })
     }
 
     return (
-        <div className={`sidebar ${isOpen ? "open" : ""}`}>
+        <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
 
             {editing ? (
                 <>
@@ -115,6 +115,13 @@ function SideBar({ user, isOpen, onClose })
 
             <button className="btn" onClick={onClose}>
                 Logout
+            </button>
+            <button
+                id="menu-button"
+                className="btn"
+                onClick={setClose}
+            >
+                X
             </button>
         </div>
     );
