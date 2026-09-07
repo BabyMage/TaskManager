@@ -83,6 +83,7 @@ function TaskPage (){
                 isOpen={isSidebarOpen}
                 onClose={handleLogout}
                 user={user}
+                setClose={closeSidebar}
             />
 
 
@@ -95,28 +96,13 @@ function TaskPage (){
                 {/* ---------- TOPBAR ---------- */}
 
                 <header className="topbar">
-                    {isSidebarOpen ? (
-                        <>
-                        <button
+                    <button
                             id="menu-button"
                             className="btn"
                             onClick={openSideBar}
                         >
                             ☰
                         </button>
-                        </>
-                    ): (
-                       <>
-                        <button
-                            id="menu-button"
-                            className="btn"
-                            onClick={closeSidebar}
-                        >
-                            X
-                        </button>
-                        </> 
-                    )}
-
                     <div className="logo">
                         ✓ Task Manager
                     </div>
@@ -184,10 +170,21 @@ function TaskPage (){
 
                     <div className="task-results">
 
-                        <p>
-                            <span>●</span>{" "}
-                            {filteredTasks.length} tarefas encontradas
-                        </p>
+                        {filteredTasks.length > 0 ? (
+                            <>
+                                <p>
+                                    <span>● </span>
+                                    {filteredTasks.length} tarefas encontradas
+                                </p>
+                            </>
+                        ) :
+                        (
+                            <>
+                            <p>
+                                Você não tem tarefas cadastradas
+                            </p>
+                            </>
+                        )}
 
                     </div>
 
