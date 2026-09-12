@@ -18,7 +18,7 @@
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-
+        
         <select
           value={filterCategory}
           onChange={(e) => setFilterCategory(e.target.value)}

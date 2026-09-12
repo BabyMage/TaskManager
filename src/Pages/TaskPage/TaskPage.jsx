@@ -145,8 +145,8 @@ function TaskPage (){
                     {/* ---------- FILTROS ---------- */}
                     
 
-                    <section className="filters-section">
                         <br />
+                    <section className="filters-section">
                     <h2>Suas Tarefas</h2>
 
                         <Filters
