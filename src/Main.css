@@ -487,8 +487,6 @@ Favor conferir o indice abaixo:
         background-color: var(--color-surface);
         box-shadow: var(--shadow-card);
         border-radius: 15px;
-        border: solid 1px #111827;
-
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -560,5 +558,11 @@ Favor conferir o indice abaixo:
         .task-table{
             width: 100%;
             min-width: 770px
+        }
+
+        .login-screen, .register-screen{
+            background-color: var(--color-background);
+            border: none;
+            box-shadow: none;
         }
    }
