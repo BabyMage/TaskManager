@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.Routes.UserRoutes import router as user_router
-from backend.Routes.TaskRoutes import router as task_routes
+from Routes.UserRoutes import router as user_router # Rotas de usuario
+from Routes.TaskRoutes import router as task_routes # Rotas de Tarefas (necessitam de token)
 
 
 app = FastAPI()

@@ -1,6 +1,6 @@
-from backend.Models.UsersModel import UsersModel
-import backend.Security.hash as hash_handler
-import backend.Security.jwt_handler as token_handler
+from Models.UsersModel import UsersModel
+import Security.hash as hash_handler
+import Security.jwt_handler as token_handler
 from fastapi import HTTPException
 
 class UserController():

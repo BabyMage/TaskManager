@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
     "frontend": "vite",
-    "backend": "uvicorn backend.main:app --reload",
+    "backend": "uvicorn main:app --app-dir backend --reload", 
     "build": "vite build"
   },
   "dependencies": {

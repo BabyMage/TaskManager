@@ -1,4 +1,4 @@
-from backend.Models.TaskModel import TaskModel
+from Models.TaskModel import TaskModel
 from fastapi import HTTPException
 
 

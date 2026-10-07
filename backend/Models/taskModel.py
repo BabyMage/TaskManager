@@ -1,4 +1,4 @@
-from backend.Configs.DBConfig import get_connection
+from Configs.DBConfig import get_connection
 
 class TaskModel():
 

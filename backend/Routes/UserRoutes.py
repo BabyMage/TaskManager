@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
-from backend.Controllers.UsersController import UserController
-from backend.Schemas.UserSchema import CreateUserSchema, UserLoginSchema, UserUpdateSchema, UserResponseSchema
-from backend.Dependencies.auth import get_current_user
+from Controllers.UsersController import UserController
+from Schemas.UserSchema import CreateUserSchema, UserLoginSchema, UserUpdateSchema, UserResponseSchema
+from Dependencies.auth import get_current_user
 
 router = APIRouter()
 controller = UserController()
