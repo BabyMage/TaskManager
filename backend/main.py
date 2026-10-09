@@ -6,12 +6,26 @@ from Routes.TaskRoutes import router as task_routes # Rotas de Tarefas (necessit
 
 app = FastAPI()
 
+import os
+
+frontend_url = os.getenv(
+    "FRONTEND_URL",
+    "http://localhost:5173"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[frontend_url],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # 🌐 Libera acesso do React
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://taskmanager-rose-sigma.vercel.app"
     ],
     allow_credentials=False,
     allow_methods=["*"],
