@@ -9,11 +9,15 @@ app = FastAPI()
 # 🌐 Libera acesso do React
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "https://taskmanager-rose-sigma.vercel.app"
+    ],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 app.include_router(
     user_router,
