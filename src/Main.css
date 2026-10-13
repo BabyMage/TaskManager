@@ -453,6 +453,10 @@ Favor conferir o indice abaixo:
         .date-status.gray {
             background-color: var(--color-text-muted);
         }
+        
+        .date-status.blue{
+            background-color: #3b82f6;
+        }
 
 /* =========================================================
    8. SIDEBAR / PERFIL

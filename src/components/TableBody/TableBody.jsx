@@ -1,6 +1,3 @@
-// Corpo da tabela de tarefas
-
-
 import { getTaskStatus } from "../../utils/DateManager"
 
 function TableBody({ tasks, setSelectedTask })
@@ -9,7 +6,7 @@ function TableBody({ tasks, setSelectedTask })
         <tbody>
             {tasks.map((task) => {
 
-                const status = getTaskStatus(task.date);
+                const status = getTaskStatus(task);
 
                 return (
                     <tr 
