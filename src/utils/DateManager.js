@@ -8,7 +8,7 @@ export function getTaskStatus(task) {
 
     if (task.done === true) {
         return {
-            label: "Já Concluída",
+            label: "Já Fez",
             color: "blue"
         };
     }

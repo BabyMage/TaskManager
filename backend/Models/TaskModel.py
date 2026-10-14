@@ -19,6 +19,8 @@ class TaskModel():
         cursor.close()
         conn.close()
 
+        for task in tasks:
+            task["done"] = bool(task["done"])
         return tasks
 
 
