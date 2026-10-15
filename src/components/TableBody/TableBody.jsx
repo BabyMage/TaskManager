@@ -1,4 +1,4 @@
-import { getTaskStatus } from "../../utils/DateManager"
+import { getTaskStatus, formatDate } from "../../utils/DateManager"
 
 function TableBody({ tasks, setSelectedTask })
 {  
@@ -16,7 +16,7 @@ function TableBody({ tasks, setSelectedTask })
                         
                         <td>{task.task}</td>
 
-                        <td>{task.date}</td>
+                        <td>{formatDate(task.date)}</td>
                         
                         <td>
                             <span className={`tag ${task.category}`}>

@@ -52,3 +52,16 @@ export function getTaskStatus(task) {
         color: "green"
     };
 }
+
+
+export function formatDate(dateString)
+{
+    if(!dateString)
+    {
+        return("Sem Data")
+    }
+
+    const [year, month, day] = dateString.split("-")
+
+    return(`${day}/${month}/${year}`)
+}
