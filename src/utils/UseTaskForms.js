@@ -14,7 +14,7 @@ export function useTaskForm(selectedTask) {
     setDate(selectedTask.date);
     setCategory(selectedTask.category);
     setPriority(selectedTask.priority || "Média");
-    setDone(selectedTask.done);
+    setDone(selectedTask.done || false);
   }
 }, [selectedTask]);
 

@@ -9,8 +9,8 @@ function TableHead()
                     <th>Data</th>
                     <th>Categoria</th>
                     <th>Prioridade</th>
-                    <th>Concluída</th>
                     <th>Status</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
     );

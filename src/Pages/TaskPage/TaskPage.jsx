@@ -1,15 +1,14 @@
 import TableBody from "../../components/TableBody/TableBody";
 import TableHead from "../../components/TableHead/TableHead";
-import Controls from "../../components/Controls/Controls";
 import Filters from "../../components/Filters/Filters";
 import SideBar from "../../components/SideBar/SideBar";
 
 import { loadTasks, filterTasks } from "../../utils/taskHelpers";
 import { logout, checkUser } from "../../Services/authService";
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { BiPlus } from "react-icons/bi";
 
 function TaskPage (){
 
@@ -40,12 +39,14 @@ function TaskPage (){
         setIsSideBarOpen(false);
     }
 
+
     // Carregar usuário e tarefas
-    useEffect(() => {
-        async function loadUser(){
+    async function loadUser(){
             const data = await checkUser();
             setUser(data);
-        }
+    }
+
+    useEffect(() => {
 
         loadUser();
         fetchTasks();
@@ -129,26 +130,16 @@ function TaskPage (){
                                 Gerencie suas atividades com facilidade e foco
                             </p>
                         </div>
-
+                        
                     </section>
-
-
-                    {/* ---------- FORMULÁRIO ---------- */}
-
-                    <Controls
-                        reloadTasks={fetchTasks}
-                        selectedTask={selectedTask}
-                        setSelectedTask={setSelectedTask}
-                    />
-
 
                     {/* ---------- FILTROS ---------- */}
                     
-
-                        <br />
+                    <hr />
+                    
                     <section className="filters-section">
                     <h2>Suas Tarefas</h2>
-
+                    
                         <Filters
                             search={search}
                             setSearch={setSearch}
@@ -162,7 +153,7 @@ function TaskPage (){
                             filterDone={filterDone}
                             setFilterDone={setFilterDone}
                         />
-
+                    
                     </section>
 
 
@@ -186,6 +177,10 @@ function TaskPage (){
                             </>
                         )}
 
+                        <button className="btn">
+                             <BiPlus size={20}/>Adicionar
+                        </button>
+
                     </div>
 
 
@@ -200,6 +195,7 @@ function TaskPage (){
                             <TableBody
                                 tasks={filteredTasks}
                                 setSelectedTask={setSelectedTask}
+                                fetchTasks={fetchTasks}
                             />
 
                         </table>

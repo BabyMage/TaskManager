@@ -7,8 +7,6 @@ function TaskForm({
   setCategory,
   priority,
   setPriority,
-  done,
-  setDone,
   error
 }) {
   return (
@@ -40,8 +38,7 @@ function TaskForm({
       </select>
 
       <select
-        value={priority}
-        onChange={(e) => setPriority(e.target.value)}
+        value={task.priority}
       >
         <option value="">Prioridade</option>
         <option value="Baixa">Baixa</option>
@@ -49,14 +46,7 @@ function TaskForm({
         <option value="Alta">Alta</option>
       </select>
 
-      <label>
-        Concluída?
-        <input
-          type="checkbox"
-          checked={done}
-          onChange={(e) => setDone(e.target.checked)}
-        />
-      </label>
+      
 
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>

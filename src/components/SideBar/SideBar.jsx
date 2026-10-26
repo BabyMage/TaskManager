@@ -108,14 +108,15 @@ function SideBar({ user, isOpen, onClose, setClose })
                     >
                         Editar Perfil
                     </button>
+                    
+                    <button className="btn" onClick={onClose}>
+                        Logout
+                    </button>
+                    <button className="btn" onClick={() => handleDelete()}>Excuir Conta</button>
                 </>
             )}
 
-            <button className="btn" onClick={() => handleDelete()}>Excuir Conta</button>
 
-            <button className="btn" onClick={onClose}>
-                Logout
-            </button>
             <button
                 id="menu-button"
                 className="btn"
