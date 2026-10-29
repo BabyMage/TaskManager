@@ -1,16 +1,51 @@
-function TaskForm({
-  task,
-  setTask,
-  date,
-  setDate,
-  category,
-  setCategory,
-  priority,
-  setPriority,
-  error
-}) {
+import { createTask } from "../../Services/taskService";
+import { useState } from "react";
+
+function TaskForm({ fetchTasks, onCancel }){
+
+  const [task, setTask] = useState("");
+  const [date, setDate] = useState("");
+  const [category, setCategory] = useState("");
+  const [priority, setPriority] = useState("");
+  const [error, setError] = useState("");
+
+  async function handleAddTask()
+  {
+    setError("")
+    if (!task.trim())
+    {
+      setError("A tarefa não pode ser vazia")
+      return;
+    };
+
+    if (!priority) {
+      setError("A prioridade é obrigatória");
+      return;
+    }
+
+    const newTask = {
+        task: task,
+        date: date,
+        category: category,
+        priority: priority,
+        done: false //done sempre vem como false.
+    };
+
+    try {
+        await createTask(newTask);
+        await fetchTasks();
+
+        setTask("");
+        setDate("");
+        setCategory("");
+        setPriority("");
+    } catch (error) {
+        console.error("Erro ao criar tarefa:", error);
+        setError("Não foi possível adicionar a tarefa.");
+    }
+  }
   return (
-    <div id="adicionarTarefa">
+    <div className="task-form">
 
       <input
         
@@ -38,7 +73,8 @@ function TaskForm({
       </select>
 
       <select
-        value={task.priority}
+        value={priority}
+        onChange={(e) => setPriority(e.target.value)}
       >
         <option value="">Prioridade</option>
         <option value="Baixa">Baixa</option>
@@ -46,9 +82,16 @@ function TaskForm({
         <option value="Alta">Alta</option>
       </select>
 
-      
-
       {error && <p style={{ color: "red" }}>{error}</p>}
+
+      <button className="btn" onClick={() => handleAddTask()}>
+        Salvar
+      </button>
+
+      <button className="btn" onClick={onCancel}>
+        Cancelar
+      </button>
+
     </div>
   );
 }

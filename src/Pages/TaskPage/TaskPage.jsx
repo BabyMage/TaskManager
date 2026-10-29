@@ -2,6 +2,7 @@ import TableBody from "../../components/TableBody/TableBody";
 import TableHead from "../../components/TableHead/TableHead";
 import Filters from "../../components/Filters/Filters";
 import SideBar from "../../components/SideBar/SideBar";
+import TaskForm from "../../components/TaskForm/TaskForm";
 
 import { loadTasks, filterTasks } from "../../utils/taskHelpers";
 import { logout, checkUser } from "../../Services/authService";
@@ -14,6 +15,7 @@ function TaskPage (){
 
     const navigate = useNavigate() 
 
+    const [addingTask, setAddingTask] = useState(false)
     const [isSidebarOpen, setIsSideBarOpen] = useState(false);
     const [user, setUser] = useState(null)
     const [tasks, setTasks] = useState([]);
@@ -176,11 +178,26 @@ function TaskPage (){
                             </p>
                             </>
                         )}
+                    </div>
 
-                        <button className="btn">
+                    <div className="task-adder">
+                        {addingTask ?
+                        (
+                            <></>
+                        ):
+                        (
+                            <button className="btn" onClick={() => setAddingTask(true)}>
                              <BiPlus size={20}/>Adicionar
-                        </button>
+                            </button>
+                        )}
+                        
 
+                        {addingTask && (
+                            <TaskForm 
+                                fetchTasks={fetchTasks}
+                                onCancel={() => setAddingTask(false)}
+                            />
+                        )}
                     </div>
 
 

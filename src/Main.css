@@ -106,13 +106,17 @@ Favor conferir o indice abaixo:
         color: var(--color-text);
     }
 
-    button,
+    button{
+        font-family: inherit;
+        border-radius: 20px;
+    }
     input,
     select{
         font-family: inherit;
-        border-radius: 7px;
+        border-radius: 20px;
         border-color: black;
         border-width: 0.2px;
+        max-height: 20px;
     }
 
     
@@ -265,8 +269,9 @@ Favor conferir o indice abaixo:
         box-shadow: var(--shadow-card);
 
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 16px;
+        align-items: center;
     }
 
     .task-form-title {
@@ -289,7 +294,7 @@ Favor conferir o indice abaixo:
         gap: 20px;
     }
 /* =========================================================
-   6. FILTROS
+   6. FILTROS E Funções de tarefas
    ========================================================= */
 
     .filters-bar {
@@ -299,6 +304,11 @@ Favor conferir o indice abaixo:
         justify-content: space-between;
         gap: 12px;
 }
+
+    .task-adder{
+        background-color: var(--color-background);
+        margin: 10px;
+    }
 
 /* =========================================================
 7. TABELA DE TAREFAS
